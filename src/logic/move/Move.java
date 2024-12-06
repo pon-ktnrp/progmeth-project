@@ -1,7 +1,8 @@
-package Move;
+package logic.move;
 
-import Pal.BasePal;
-import Pal.Type;
+import logic.pal.BasePal;
+import utils.MoveType;
+import utils.Type;
 
 public class Move {
     private String name;
@@ -10,9 +11,10 @@ public class Move {
     private int power; // Base damage
     private int accuracy; // Percentage chance to hit
 
-    public Move(String name, Type type, int power, int accuracy) {
+    public Move(String name, Type type, MoveType movetype, int power, int accuracy) {
         this.name = name;
         this.type = type;
+        this.moveType = movetype;
         this.power = power;
         this.accuracy = accuracy;
     }

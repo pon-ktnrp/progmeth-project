@@ -1,25 +1,32 @@
-package Pal;
+package logic.pal;
 
 import java.util.ArrayList;
 
-import Move.Move;
+import logic.move.Move;
+import utils.Type;
 
 public abstract class BasePal {
 	
 	//Pal's fields
-	private String name;
-	private Type type;
-	private int level;
-	private int exp;
-	private int maxHp;
-	private int hp;
-	private int atk;
-	private int def;
-	private int spAtk;
-	private int spDef;
-	private int spd;
-	private ArrayList<Move> moveSet;
-	private int captureRate;
+	protected String name;
+	protected Type type;
+	protected int level;
+	protected int exp;
+	protected int maxHp;
+	protected int hp;
+	protected int atk;
+	protected int def;
+	protected int spAtk;
+	protected int spDef;
+	protected int spd;
+	protected ArrayList<Move> moves;
+	protected int captureRate;
+	protected int baseHp;
+	protected int baseAtk;
+	protected int baseDef;
+	protected int baseSpAtk;
+	protected int baseSpDef;
+	protected int baseSpd;
 	
 	//Pal's method
 	public BasePal(String name, Type type, int level){
@@ -59,16 +66,26 @@ public abstract class BasePal {
 	
     private void levelUp() {
         this.level++;
+        updateStat();
     }
 	
 	public void useMove(int moveIndex, BasePal target) {
-        if (moveIndex >= 0 && moveIndex < moveSet.size()) {
-            Move move = this.moveSet.get(moveIndex);
+        if (moveIndex >= 0 && moveIndex < moves.size()) {
+            Move move = this.moves.get(moveIndex);
             move.execute(this, target);
         } else {
             System.out.println("Invalid move!");
         }
     }
+	
+	public void updateStat() {
+		this.maxHp = (int) (0.02 * baseHp * level) + baseHp + 10;
+        this.atk = (int) (0.02 * baseAtk * level) + 5;
+        this.def = (int) (0.02 * baseDef * level) + 5;
+        this.spAtk = (int) (0.02 * baseSpAtk * level) + 5;
+        this.spDef = (int) (0.02 * baseSpDef * level) + 5;
+        this.spd = (int) (0.02 * baseSpd * level) + 5;
+	}
 
 	public String getName() {
 		return name;
