@@ -64,7 +64,7 @@ public abstract class BasePal {
         return level * 100; // Example EXP threshold formula
     }
 	
-    private void levelUp() {
+    public void levelUp() {
         this.level++;
         updateStat();
     }
