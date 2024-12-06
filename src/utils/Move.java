@@ -1,7 +1,6 @@
-package Move;
+package utils;
 
-import Pal.BasePal;
-import Pal.Type;
+import logic.pal.BasePal;
 
 public class Move {
     private String name;
