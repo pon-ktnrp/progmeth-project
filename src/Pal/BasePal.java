@@ -94,6 +94,22 @@ public abstract class BasePal {
 		this.def = def;
 	}
 	
+	public int getSpAtk() {
+		return spAtk;
+	}
+
+	public void setSpAtk(int spAtk) {
+		this.spAtk = spAtk;
+	}
+
+	public int getSpDef() {
+		return spDef;
+	}
+
+	public void setSpDef(int spDef) {
+		this.spDef = spDef;
+	}
+
 	public Type getType() {
 		return type;
 	}

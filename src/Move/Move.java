@@ -6,6 +6,7 @@ import Pal.Type;
 public class Move {
     private String name;
     private Type type;
+    private MoveType moveType;
     private int power; // Base damage
     private int accuracy; // Percentage chance to hit
 
@@ -38,8 +39,11 @@ public class Move {
 
     private int calculateDamage(BasePal attacker, BasePal target) {
         // Basic damage formula: (Power * Attack / Target Defense)
+    	int attackStat = moveType.equals(MoveType.PHYSICAL) ? attacker.getAtk() : attacker.getSpAtk();
+        int defenseStat = moveType.equals(MoveType.PHYSICAL) ? target.getDef() : target.getSpDef();
+    	
         double modifier = getTypeEffectiveness(type, target.getType());
-        return (int) ((power * attacker.getAtk() / (double) target.getDef()) * modifier);
+        return (int) ((power * attackStat / (double) defenseStat) * modifier);
     }
 
     private double getTypeEffectiveness(Type moveType, Type targetType) {
