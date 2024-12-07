@@ -8,7 +8,7 @@ import utils.Type;
 public class Ivysaur extends BasePal implements Evolvable {
 	private final int evolutionLevel = 32 ;
 
-	public Ivysaur(String name, Type type, int level) {
+	public Ivysaur(int level) {
 		super("Ivysaur",Type.GRASS,level);
 		initializeStats();
 		initializeMoves();
@@ -21,9 +21,9 @@ public class Ivysaur extends BasePal implements Evolvable {
 	}
 
 	@Override
-	public void evolve() {
+	public BasePal evolve() {
 		// TODO Auto-generated method stub
-
+		return new Venusaur(this.level);
 	}
 
 	@Override
@@ -46,16 +46,4 @@ public class Ivysaur extends BasePal implements Evolvable {
 		this.moves.add(new Move("Razor Leaf", Type.GRASS, MoveType.PHYSICAL, 55, 95));
 		this.moves.add(new Move("Take Down", Type.NORMAL, MoveType.PHYSICAL, 90, 85));
 	}
-
-	@Override
-	public void updateStat() {
-		// TODO Auto-generated method stub
-		this.maxHp = (int) (0.02 * baseHp * level) + baseHp + 10;
-        this.atk = (int) (0.02 * baseAtk * level) + 5;
-        this.def = (int) (0.02 * baseDef * level) + 5;
-        this.spAtk = (int) (0.02 * baseSpAtk * level) + 5;
-        this.spDef = (int) (0.02 * baseSpDef * level) + 5;
-        this.spd = (int) (0.02 * baseSpd * level) + 5;
-	}
-
 }

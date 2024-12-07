@@ -5,16 +5,16 @@ import utils.Evolvable;
 import utils.MoveType;
 import utils.Type;
 
-public class Squirtle extends BasePal implements Evolvable {
-	private final int evolutionLevel = 16 ;
+public class Dratini extends BasePal implements Evolvable {
+
+	private final int evolutionLevel = 25 ;
 	
-	public Squirtle(int level) {
-		super("Squirtle",Type.WATER,level);
+	public Dratini(int level) {
+		super("Dratini",Type.DRAGON,level);
 		initializeStats();
 		initializeMoves();
 	}
 	
-	@Override
 	public boolean isEvolvable() {
 		// TODO Auto-generated method stub
 		return this.level >= evolutionLevel;
@@ -23,18 +23,18 @@ public class Squirtle extends BasePal implements Evolvable {
 	@Override
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
-		return new Wartortle(this.level);
+		return new Dragonair(this.level);
 	}
 
 	@Override
 	public void initializeStats() {
 		// TODO Auto-generated method stub
-		this.baseHp = 44;
-		this.baseAtk = 48;
-		this.baseDef = 65;
+		this.baseHp = 41;
+		this.baseAtk = 64;
+		this.baseDef = 45;
 		this.baseSpAtk = 50;
-		this.baseSpDef = 64;
-		this.baseSpd = 43;
+		this.baseSpDef = 50;
+		this.baseSpd = 50;
 		updateStat();
         this.hp = maxHp;
 	}
@@ -42,7 +42,7 @@ public class Squirtle extends BasePal implements Evolvable {
 	@Override
 	public void initializeMoves() {
 		// TODO Auto-generated method stub
-		this.moves.add(new Move("Tackle", Type.NORMAL, MoveType.PHYSICAL, 40, 100));
-		this.moves.add(new Move("Water Gun", Type.WATER, MoveType.PHYSICAL, 40, 100));
+		this.moves.add(new Move("Twister", Type.DRAGON, MoveType.SPECIAL, 40, 100));
+		this.moves.add(new Move("Dragon Tail", Type.DRAGON, MoveType.PHYSICAL, 60, 90));
 	}
 }

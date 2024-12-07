@@ -22,11 +22,9 @@ public class Charmeleon extends BasePal implements Evolvable {
 	}
 	
 	@Override
-	public void evolve() {
+	public BasePal evolve() {
 		// TODO Auto-generated method stub
-		if(isEvolvable()) {
-			
-		}
+		return new Charizard(this.level);
 	}
 
 	@Override
