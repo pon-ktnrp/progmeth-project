@@ -40,7 +40,7 @@ public class MenuScene {
         // Add the ImageView as the first child of the root
         root.getChildren().add(img);
 
-		Title title = new Title("P A L R O G U E");
+		Title title = new Title("P a l R o g u e");
 		title.setTranslateX(75);
 		title.setTranslateY(200);
 
@@ -59,9 +59,9 @@ public class MenuScene {
 
 		});
 		MenuItem itemUpgrade = new MenuItem("UPGRADE");
-		itemStart.setOnMouseClicked(event -> {
+		itemUpgrade.setOnMouseClicked(event -> {
 
-		    Parent secondPage = SecondPage.createPage("Welcome to the START page!");
+		    Parent secondPage = UpgradePage.createPage();
 		    Scene newScene = new Scene(secondPage);
 
 		    // Get the current stage and set the new scene
