@@ -33,6 +33,7 @@ public abstract class BasePal {
 		this.name = name;
 		this.type = type;
 		this.level = level;
+		this.moves = new ArrayList<Move>();
 	}
 	
 	public abstract void initializeStats();
