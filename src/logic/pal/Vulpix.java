@@ -1,0 +1,48 @@
+package logic.pal;
+
+import logic.move.Move;
+import utils.Evolvable;
+import utils.MoveType;
+import utils.Type;
+
+public class Vulpix extends BasePal implements Evolvable {
+	private final int evolutionLevel = 24 ;
+	
+	public Vulpix(int level) {
+		super("Vulpix",Type.FIRE,level);
+		initializeStats();
+		initializeMoves();
+	}
+	
+	@Override
+	public boolean isEvolvable() {
+		// TODO Auto-generated method stub
+		return this.level >= evolutionLevel;
+	}
+	
+	@Override
+	public BasePal evolve() {
+		// TODO Auto-generated method stub
+		return new Ninetales(this.level);
+	}
+
+	@Override
+	public void initializeStats() {
+		// TODO Auto-generated method stub
+		this.baseHp = 38;
+		this.baseAtk = 41;
+		this.baseDef = 40;
+		this.baseSpAtk = 50;
+		this.baseSpDef = 65;
+		this.baseSpd = 65;
+		updateStat();
+        this.hp = maxHp;
+	}
+
+	@Override
+	public void initializeMoves() {
+		// TODO Auto-generated method stub
+		this.moves.add(new Move("Ember", Type.FIRE, MoveType.SPECIAL, 40, 100));
+		this.moves.add(new Move("Quick Attack", Type.NORMAL, MoveType.PHYSICAL, 40, 100));
+	}
+}
