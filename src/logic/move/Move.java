@@ -1,21 +1,8 @@
-<<<<<<<< HEAD:src/utils/Move.java
-package utils;
-|||||||| 19ddd9b:src/Move/Move.java
-package Move;
-========
 package logic.move;
->>>>>>>> pond:src/logic/move/Move.java
 
-<<<<<<<< HEAD:src/utils/Move.java
-import logic.pal.BasePal;
-|||||||| 19ddd9b:src/Move/Move.java
-import Pal.BasePal;
-import Pal.Type;
-========
 import logic.pal.BasePal;
 import utils.MoveType;
 import utils.Type;
->>>>>>>> pond:src/logic/move/Move.java
 
 public class Move {
     private String name;
