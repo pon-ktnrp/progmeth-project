@@ -5,11 +5,11 @@ import utils.Evolvable;
 import utils.MoveType;
 import utils.Type;
 
-public class Squirtle extends BasePal implements Evolvable {
-	private final int evolutionLevel = 16 ;
+public class Exeggcute extends BasePal implements Evolvable {
+	private final int evolutionLevel = 20;
 	
-	public Squirtle(int level) {
-		super("Squirtle",Type.WATER,level);
+	public Exeggcute(int level) {
+		super("Exeggcute",Type.GRASS,level);
 		initializeStats();
 		initializeMoves();
 	}
@@ -23,18 +23,18 @@ public class Squirtle extends BasePal implements Evolvable {
 	@Override
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
-		return new Wartortle(this.level);
+		return new Exeggutor(this.level);
 	}
 
 	@Override
 	public void initializeStats() {
 		// TODO Auto-generated method stub
-		this.baseHp = 44;
-		this.baseAtk = 48;
-		this.baseDef = 65;
-		this.baseSpAtk = 50;
-		this.baseSpDef = 64;
-		this.baseSpd = 43;
+		this.baseHp = 60;
+		this.baseAtk = 40;
+		this.baseDef = 80;
+		this.baseSpAtk = 60;
+		this.baseSpDef = 45;
+		this.baseSpd = 40;
 		updateStat();
         this.hp = maxHp;
 	}
@@ -42,7 +42,6 @@ public class Squirtle extends BasePal implements Evolvable {
 	@Override
 	public void initializeMoves() {
 		// TODO Auto-generated method stub
-		this.moves.add(new Move("Tackle", Type.NORMAL, MoveType.PHYSICAL, 40, 100));
-		this.moves.add(new Move("Water Gun", Type.WATER, MoveType.PHYSICAL, 40, 100));
+		this.moves.add(new Move("Mega Drain", Type.GRASS, MoveType.PHYSICAL, 40, 100));
 	}
 }

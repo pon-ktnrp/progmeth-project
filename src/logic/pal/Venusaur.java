@@ -5,7 +5,7 @@ import utils.MoveType;
 import utils.Type;
 
 public class Venusaur extends BasePal {
-	public Venusaur(String name, Type type, int level) {
+	public Venusaur(int level) {
 		super("Venusaur",Type.GRASS,level);
 		initializeStats();
 		initializeMoves();

@@ -1,6 +1,8 @@
 package utils;
 
+import logic.pal.BasePal;
+
 public interface Evolvable {
 	boolean isEvolvable();
-	void evolve();
+	BasePal evolve();
 }

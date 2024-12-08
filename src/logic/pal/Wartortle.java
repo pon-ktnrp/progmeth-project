@@ -21,11 +21,9 @@ public class Wartortle extends BasePal implements Evolvable {
 	}
 	
 	@Override
-	public void evolve() {
+	public BasePal evolve() {
 		// TODO Auto-generated method stub
-		if(isEvolvable()) {
-			
-		}
+		return new Blastoise(this.level);
 	}
 
 	@Override

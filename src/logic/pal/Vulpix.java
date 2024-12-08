@@ -5,11 +5,11 @@ import utils.Evolvable;
 import utils.MoveType;
 import utils.Type;
 
-public class Squirtle extends BasePal implements Evolvable {
-	private final int evolutionLevel = 16 ;
+public class Vulpix extends BasePal implements Evolvable {
+	private final int evolutionLevel = 24 ;
 	
-	public Squirtle(int level) {
-		super("Squirtle",Type.WATER,level);
+	public Vulpix(int level) {
+		super("Vulpix",Type.FIRE,level);
 		initializeStats();
 		initializeMoves();
 	}
@@ -23,18 +23,18 @@ public class Squirtle extends BasePal implements Evolvable {
 	@Override
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
-		return new Wartortle(this.level);
+		return new Ninetales(this.level);
 	}
 
 	@Override
 	public void initializeStats() {
 		// TODO Auto-generated method stub
-		this.baseHp = 44;
-		this.baseAtk = 48;
-		this.baseDef = 65;
+		this.baseHp = 38;
+		this.baseAtk = 41;
+		this.baseDef = 40;
 		this.baseSpAtk = 50;
-		this.baseSpDef = 64;
-		this.baseSpd = 43;
+		this.baseSpDef = 65;
+		this.baseSpd = 65;
 		updateStat();
         this.hp = maxHp;
 	}
@@ -42,7 +42,7 @@ public class Squirtle extends BasePal implements Evolvable {
 	@Override
 	public void initializeMoves() {
 		// TODO Auto-generated method stub
-		this.moves.add(new Move("Tackle", Type.NORMAL, MoveType.PHYSICAL, 40, 100));
-		this.moves.add(new Move("Water Gun", Type.WATER, MoveType.PHYSICAL, 40, 100));
+		this.moves.add(new Move("Ember", Type.FIRE, MoveType.SPECIAL, 40, 100));
+		this.moves.add(new Move("Quick Attack", Type.NORMAL, MoveType.PHYSICAL, 40, 100));
 	}
 }
