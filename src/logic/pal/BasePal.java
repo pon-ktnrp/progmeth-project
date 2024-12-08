@@ -12,21 +12,21 @@ public abstract class BasePal {
 	protected Type type;
 	protected int level;
 	protected int exp;
+	protected int baseHp;
 	protected int maxHp;
 	protected int hp;
+	protected int baseAtk;
 	protected int atk;
+	protected int baseDef;
 	protected int def;
+	protected int baseSpAtk;
 	protected int spAtk;
+	protected int baseSpDef;
 	protected int spDef;
+	protected int baseSpd;
 	protected int spd;
 	protected ArrayList<Move> moves;
-	protected int captureRate;
-	protected int baseHp;
-	protected int baseAtk;
-	protected int baseDef;
-	protected int baseSpAtk;
-	protected int baseSpDef;
-	protected int baseSpd;
+	//protected int captureRate;
 	
 	//Pal's method
 	public BasePal(String name, Type type, int level){
@@ -88,51 +88,11 @@ public abstract class BasePal {
         this.spd = (int) (0.02 * baseSpd * level) + 5;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getAtk() {
-		return atk;
-	}
-
-	public void setAtk(int atk) {
-		this.atk = atk;
-	}
-
-	public int getDef() {
-		return def;
-	}
-
-	public void setDef(int def) {
-		this.def = def;
-	}
-	
-	public int getSpAtk() {
-		return spAtk;
-	}
-
-	public void setSpAtk(int spAtk) {
-		this.spAtk = spAtk;
-	}
-
-	public int getSpDef() {
-		return spDef;
-	}
-
-	public void setSpDef(int spDef) {
-		this.spDef = spDef;
-	}
-
-	public Type getType() {
-		return type;
-	}
-
-	public void setType(Type type) {
-		this.type = type;
+	@Override
+	public String toString() {
+		return "BasePal [name=" + name + ", type=" + type + ", level=" + level + ", exp=" + exp + ", baseHp=" + baseHp
+				+ ", maxHp=" + maxHp + ", hp=" + hp + ", baseAtk=" + baseAtk + ", atk=" + atk + ", baseDef=" + baseDef
+				+ ", def=" + def + ", baseSpAtk=" + baseSpAtk + ", spAtk=" + spAtk + ", baseSpDef=" + baseSpDef
+				+ ", spDef=" + spDef + ", baseSpd=" + baseSpd + ", spd=" + spd + ", moves=" + moves + "]";
 	}
 }
