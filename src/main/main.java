@@ -5,17 +5,17 @@ import logic.item.*;
 
 public class main {
 	public static void main(String[] args) {
-		//System.out.print(new Bulbasaur(10).getType());
-		BasePal slave = new Venusaur(32);
-		BasePal master = new Charmander(16);
+//		System.out.print(new Bulbasaur(10).getType());
+		BasePal slave = new Mewtwo(50);
+		BasePal master = new Charizard(45);
 		
 		System.out.println(slave.getHp());
 		
-		master.useMove(1, slave);
+		master.useMove(3, slave);
 		
 		System.out.println(slave.getHp());
 		
-		BaseConsumption potion = new Potion(1);
+		BaseConsumption potion = new SuperPotion(1);
 		
 		potion.use(slave);
 		
