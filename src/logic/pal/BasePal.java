@@ -42,6 +42,9 @@ public abstract class BasePal {
 	public void takeDamage(int damage) {
         this.hp -= damage;
         if (this.hp < 0) this.hp = 0;
+        if(isFainted()) {
+        	System.out.println(name + " is fainted.");
+        }
     }
 	
 	public void heal(int amount) {

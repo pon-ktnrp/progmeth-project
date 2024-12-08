@@ -54,7 +54,7 @@ public class Move {
         if (moveType.equals(Type.WATER) && targetType.equals(Type.FIRE)) return 2.0;
         if (moveType.equals(Type.GRASS) && targetType.equals(Type.WATER)) return 2.0;
         //if (moveType.equals(Type.NORMAL) && targetType.equals(Type.DRAGON)) return 2.0;
-        if (moveType.equals(Type.DRAGON) && !targetType.equals(Type.NORMAL)) return 2.0;
+        if (moveType.equals(Type.DRAGON) && !targetType.equals(Type.NORMAL)) return 1.25;
         return 1.0; // Neutral effectiveness
     }
 }

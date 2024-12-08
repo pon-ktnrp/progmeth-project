@@ -12,7 +12,12 @@ public class SuperPotion extends BaseConsumption {
 	@Override
 	public void use(BasePal target) {
 		// TODO Auto-generated method stub
-		target.heal(target.getMaxHp() * getEffectValue()/100);
+		if(target.isFainted()) {
+			System.out.println("Can't heal fainted Pal.");
+		}
+		else {
+			target.heal(target.getMaxHp() * getEffectValue()/100);
+		}
 	}
 
 	@Override
