@@ -88,11 +88,147 @@ public abstract class BasePal {
         this.spd = (int) (0.02 * baseSpd * level) + 5;
 	}
 
-	@Override
-	public String toString() {
-		return "BasePal [name=" + name + ", type=" + type + ", level=" + level + ", exp=" + exp + ", baseHp=" + baseHp
-				+ ", maxHp=" + maxHp + ", hp=" + hp + ", baseAtk=" + baseAtk + ", atk=" + atk + ", baseDef=" + baseDef
-				+ ", def=" + def + ", baseSpAtk=" + baseSpAtk + ", spAtk=" + spAtk + ", baseSpDef=" + baseSpDef
-				+ ", spDef=" + spDef + ", baseSpd=" + baseSpd + ", spd=" + spd + ", moves=" + moves + "]";
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+	public int getBaseHp() {
+		return baseHp;
+	}
+
+	public void setBaseHp(int baseHp) {
+		this.baseHp = baseHp;
+	}
+
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
+	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	public int getBaseAtk() {
+		return baseAtk;
+	}
+
+	public void setBaseAtk(int baseAtk) {
+		this.baseAtk = baseAtk;
+	}
+
+	public int getAtk() {
+		return atk;
+	}
+
+	public void setAtk(int atk) {
+		this.atk = atk;
+	}
+
+	public int getBaseDef() {
+		return baseDef;
+	}
+
+	public void setBaseDef(int baseDef) {
+		this.baseDef = baseDef;
+	}
+
+	public int getDef() {
+		return def;
+	}
+
+	public void setDef(int def) {
+		this.def = def;
+	}
+
+	public int getBaseSpAtk() {
+		return baseSpAtk;
+	}
+
+	public void setBaseSpAtk(int baseSpAtk) {
+		this.baseSpAtk = baseSpAtk;
+	}
+
+	public int getSpAtk() {
+		return spAtk;
+	}
+
+	public void setSpAtk(int spAtk) {
+		this.spAtk = spAtk;
+	}
+
+	public int getBaseSpDef() {
+		return baseSpDef;
+	}
+
+	public void setBaseSpDef(int baseSpDef) {
+		this.baseSpDef = baseSpDef;
+	}
+
+	public int getSpDef() {
+		return spDef;
+	}
+
+	public void setSpDef(int spDef) {
+		this.spDef = spDef;
+	}
+
+	public int getBaseSpd() {
+		return baseSpd;
+	}
+
+	public void setBaseSpd(int baseSpd) {
+		this.baseSpd = baseSpd;
+	}
+
+	public int getSpd() {
+		return spd;
+	}
+
+	public void setSpd(int spd) {
+		this.spd = spd;
+	}
+
+	public ArrayList<Move> getMoves() {
+		return moves;
+	}
+
+	public void setMoves(ArrayList<Move> moves) {
+		this.moves = moves;
 	}
 }

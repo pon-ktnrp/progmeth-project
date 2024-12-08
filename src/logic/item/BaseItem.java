@@ -17,12 +17,22 @@ public abstract class BaseItem {
     	setQuantity(quantity);
     }
     
+
+	public String getName() {
+		return name;
+	}
+ 
     public void setName(String name) {
     	this.name = name;
     	if (name.isBlank()) {
             this.name = "Unnamed Item";
         }
     }
+    
+
+	public String getDescription() {
+		return description;
+	}
     
     public void setDescription(String description) {
     	this.description = description;
@@ -32,7 +42,7 @@ public abstract class BaseItem {
     }
     
     public int getQuantity() {
-    	return this.quantity;
+    	return quantity;
     }
     
     public void setQuantity(int quantity) {
@@ -45,5 +55,9 @@ public abstract class BaseItem {
     public void reduceQuantity(int amount) {
     	setQuantity(getQuantity() - amount);
     }
+
+	@Override
+	public abstract String toString();
+	
 }
 
