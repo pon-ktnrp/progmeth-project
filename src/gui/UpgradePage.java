@@ -54,12 +54,13 @@ public class UpgradePage {
 
 	    root.setPrefSize(860, 600);
 	    // Create an ImageView for the background
-	    ImageView img = new ImageView();
-	    try (InputStream is = Files.newInputStream(Paths.get("res/bg1.jpg"))) {
-	        img.setImage(new Image(is));
-	    } catch (IOException e) {
-	        System.out.println("Couldn't load image");
-	    }
+        ImageView img = new ImageView();
+		try {
+			String classLoaderPath = ClassLoader.getSystemResource("bg1.jpg").toString();
+            img.setImage(new Image(classLoaderPath));
+		} catch (Exception e) {
+            System.out.println("Couldn't load image");
+		}
 
 	    img.fitWidthProperty().bind(root.widthProperty());
 	    img.fitHeightProperty().bind(root.heightProperty());

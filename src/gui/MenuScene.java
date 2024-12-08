@@ -27,12 +27,12 @@ public class MenuScene {
         root.setPrefSize(860, 600);
         // Create an ImageView for the background
         ImageView img = new ImageView();
-        try (InputStream is = Files.newInputStream(Paths.get("res/bg.jpg"))) {
-            img.setImage(new Image(is));
-        } catch (IOException e) {
+		try {
+			String classLoaderPath = ClassLoader.getSystemResource("bg.jpg").toString();
+            img.setImage(new Image(classLoaderPath));
+		} catch (Exception e) {
             System.out.println("Couldn't load image");
-        }
-
+		}
         // Bind the size of the ImageView to the Pane's size
         img.fitWidthProperty().bind(root.widthProperty());
         img.fitHeightProperty().bind(root.heightProperty());
@@ -49,7 +49,7 @@ public class MenuScene {
 		MenuItem itemStart = new MenuItem("START");
 		itemStart.setOnMouseClicked(event -> {
 
-			    Parent secondPage = StartPage.createPage();
+			    Parent secondPage = SelectPalPage.createPage();
 			    Scene newScene = new Scene(secondPage);
 
 			    // Get the current stage and set the new scene

@@ -17,10 +17,20 @@
             <Image url="@../../res/field1.jpg" />
          </image>
       </ImageView>
+      <ImageView fitHeight="279.0" fitWidth="287.0" layoutX="502.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/front/1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="279.0" fitWidth="287.0" layoutX="84.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/back/1.png" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="124.0" layoutY="462.0" stroke="#c73525" strokeType="INSIDE" strokeWidth="8.0" width="593.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="124.0" layoutX="592.0" layoutY="462.0" stroke="#c73525" strokeType="INSIDE" strokeWidth="8.0" width="268.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="89.0" layoutX="60.0" layoutY="52.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="360.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="89.0" layoutX="462.0" layoutY="359.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="360.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="68.0" layoutX="60.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="360.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="89.0" layoutX="462.0" layoutY="359.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="360.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="12.0" layoutX="462.0" layoutY="391.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="360.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="12.0" layoutX="60.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="360.0" />
       <ProgressBar layoutX="656.0" layoutY="392.0" prefHeight="10.0" prefWidth="139.0" progress="0.0" />
@@ -44,5 +54,45 @@
       <Button layoutX="599.0" layoutY="469.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" text="Fight" />
       <Button layoutX="725.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="127.0" text="Cage" />
       <Button layoutX="598.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="127.0" text="Pal" />
+      <ImageView fitHeight="52.0" fitWidth="54.0" layoutX="436.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/GRASS.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="52.0" fitWidth="54.0" layoutX="394.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/GRASS.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="71.0" layoutY="110.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Bulbasaur">
+         <font>
+            <Font name="OCR A Extended" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="486.0" layoutY="384.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Bulbasaur">
+         <font>
+            <Font name="OCR A Extended" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="290.0" layoutY="110.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Lv.5">
+         <font>
+            <Font name="OCR A Extended" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="694.0" layoutY="383.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Lv.5">
+         <font>
+            <Font name="OCR A Extended" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="694.0" layoutY="436.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="12/23">
+         <font>
+            <Font name="OCR A Extended" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="42.0" layoutY="503.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="What will Bulbasaur do?">
+         <font>
+            <Font name="OCR A Extended" size="25.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -6,13 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -23,40 +21,31 @@ public class StartPage {
     public static Parent createPage() {
         AnchorPane root = new AnchorPane();
         root.setPrefSize(860, 600);
-        
+
         // Background Rectangle
-        Rectangle backgroundRect = new Rectangle(860, 600);
-        backgroundRect.setFill(Color.web("#362d3e"));
-        backgroundRect.setStroke(Color.web("#362d3e"));
-        root.getChildren().add(backgroundRect);
+        Rectangle background = new Rectangle(860, 600);
+        background.setFill(Color.web("#362d3e"));
+        background.setStroke(Color.web("#362d3e"));
+        root.getChildren().add(background);
 
         // Background Image
-        ImageView img = new ImageView();
-        try (InputStream is = Files.newInputStream(Paths.get("res/field1.jpg"))) {
-            img.setImage(new Image(is));
-        } catch (IOException e) {
-            System.out.println("Couldn't load image");
-        }
-        img.setFitWidth(860);
-        img.setFitHeight(600);
-        img.setPreserveRatio(true);
-        AnchorPane.setTopAnchor(img, 0.0);
-        AnchorPane.setLeftAnchor(img, 0.0);
-        root.getChildren().add(img);
+        ImageView backgroundImage = createImageView("field1.jpg", 860, 600, 0, 0);
+        root.getChildren().add(backgroundImage);
 
+        // Foreground Images
+        ImageView frontImage = createImageView("front/1.png", 287, 279, 502, 127);
+        ImageView backImage = createImageView("back/1.png", 287, 279, 84, 295);
+        root.getChildren().addAll(frontImage, backImage);
 
+        // Rectangles
+        Rectangle bottomLeftRect = createRectangle(0, 462, 593, 124, "#362d3e", "#c73525", 8);
+        Rectangle bottomRightRect = createRectangle(592, 462, 268, 124, "#362d3e", "#c73525", 8);
+        root.getChildren().addAll(bottomLeftRect, bottomRightRect);
 
-        // Bottom Rectangles
-        Rectangle bottomRect1 = createRectangle(0, 462, 593, 124, "#362d3e", "#c73525", 8);
-        Rectangle bottomRect2 = createRectangle(592, 462, 268, 124, "#362d3e", "#c73525", 8);
-        root.getChildren().addAll(bottomRect1, bottomRect2);
-
-        // Info Boxes
-        Rectangle infoBox1 = createRectangle(60, 52, 360, 89, "#362d3e", "BLACK", 0);
-        Rectangle infoBox2 = createRectangle(462, 359, 360, 89, "#362d3e", "BLACK", 0);
+        Rectangle infoBox1 = createRectangle(60, 73, 360, 68, "#362d3e", "BLACK", 2);
+        Rectangle infoBox2 = createRectangle(462, 359, 360, 89, "#362d3e", "BLACK", 2);
         root.getChildren().addAll(infoBox1, infoBox2);
 
-        // HP Bars
         Rectangle hpBar1 = createRectangle(60, 127, 360, 12, "WHITE", "BLACK", 0);
         Rectangle hpBar2 = createRectangle(462, 391, 360, 12, "WHITE", "BLACK", 0);
         root.getChildren().addAll(hpBar1, hpBar2);
@@ -67,16 +56,35 @@ public class StartPage {
         ProgressBar expProgress = createProgressBar(554, 442, 268, 10, 0.0);
         root.getChildren().addAll(hpProgress1, hpProgress2, expProgress);
 
-        // Text Labels
-        Text hpLabel1 = createText("Hp", 223, 141, "#3efa7d");
-        Text hpLabel2 = createText("Hp", 628, 404, "#3efa7d");
-        Text expLabel = createText("Exp", 533, 442, "#03b7ef");
-        root.getChildren().addAll(hpLabel1, hpLabel2, expLabel);
-        
-        createButton(root, "Fight", 599, 469, 252, 52);
-        createButton(root, "Cage", 725, 524, 127, 52);
-        createButton(root, "Pal", 598, 524, 127, 52);
+        ImageView playerType = createImageView("type/GRASS.png", 52, 54, 436, 376);
+        ImageView enemyType = createImageView("type/GRASS.png", 52, 54, 394, 76);
+        root.getChildren().addAll(playerType, enemyType);
 
+        // Buttons
+        Button fightButton = createButton("Fight", 599, 469, 252, 52);
+        Button cageButton = createButton("Cage", 725, 524, 127, 52);
+        Button palButton = createButton("Pal", 598, 524, 127, 52);
+        root.getChildren().addAll(fightButton, cageButton, palButton);
+
+        // Text
+        Text hpText1 = createText("Hp", 223, 141, "#3efa7d",23);
+        hpText1.setStroke(Color.BLACK);
+        hpText1.setStrokeWidth(1);
+        Text hpText2 = createText("Hp", 628, 404, "#3efa7d",23);
+        hpText2.setStroke(Color.BLACK);
+        hpText2.setStrokeWidth(1);
+        Text expText = createText("Exp", 533, 442, "#03b7ef",23);
+        expText.setStroke(Color.BLACK);
+        expText.setStrokeWidth(1);
+        root.getChildren().addAll(hpText1, hpText2, expText);
+        
+        Text playerName = createText("Bulbasaur", 71, 110, "WHITE", 25);
+        Text playerLevel = createText("Lv.5", 290, 110, "WHITE", 25);
+        Text enemyName = createText("Bulbasaur", 486, 384, "WHITE", 25);
+        Text enemyLevel = createText("Lv.5", 694, 383, "WHITE", 25);
+        Text levelFractionText = createText("12/23", 694, 436, "WHITE", 25);
+        Text context = createText("What will Bulbasaur do?", 42, 503, "WHITE", 25);
+        root.getChildren().addAll(playerName, playerLevel, enemyLevel, enemyName, levelFractionText,context);
 
         return root;
     }
@@ -93,6 +101,22 @@ public class StartPage {
         return rect;
     }
 
+    private static ImageView createImageView(String path, double width, double height, double x, double y) {
+        ImageView imageView = new ImageView();
+		try {
+			String classLoaderPath = ClassLoader.getSystemResource(path).toString();
+            imageView.setImage(new Image(classLoaderPath));
+		} catch (Exception e) {
+            System.out.println("Couldn't load image");
+		}
+        imageView.setFitWidth(width);
+        imageView.setFitHeight(height);
+        imageView.setPreserveRatio(true);
+        imageView.setLayoutX(x);
+        imageView.setLayoutY(y);
+        return imageView;
+    }
+
     private static ProgressBar createProgressBar(double x, double y, double width, double height, double progress) {
         ProgressBar progressBar = new ProgressBar(progress);
         progressBar.setLayoutX(x);
@@ -101,23 +125,22 @@ public class StartPage {
         progressBar.setPrefHeight(height);
         return progressBar;
     }
-    
-    private static void createButton(AnchorPane root, String text, double x, double y, double width, double height) {
+
+    private static Button createButton(String text, double x, double y, double width, double height) {
         Button button = new Button(text);
-        button.setPrefSize(width, height);
         button.setLayoutX(x);
         button.setLayoutY(y);
-        root.getChildren().add(button);
+        button.setPrefWidth(width);
+        button.setPrefHeight(height);
+        return button;
     }
 
-    private static Text createText(String content, double x, double y, String fillColor) {
+    private static Text createText(String content, double x, double y, String fillColor, double fontSize) {
         Text text = new Text(content);
         text.setLayoutX(x);
         text.setLayoutY(y);
         text.setFill(Color.web(fillColor));
-        text.setStroke(Color.BLACK);
-        text.setStrokeWidth(1.25);
-        text.setFont(Font.font("OCR A Extended", 25));
+        text.setFont(Font.font("OCR A Extended", fontSize));
         return text;
     }
 }

@@ -12,6 +12,7 @@ public class GameController {
 	private int xSpAtt;
 	private int xSpDef;
 	private int xSpeed;
+	private int wave;
 	private static GameController instance;
 	private ArrayList<BasePal> pals;
 
@@ -30,7 +31,7 @@ public class GameController {
 	private void initGame() {
 		this.money = 100; // Reset money
 		this.pocket = 1000; // Reset pocket
-		this.xHp = this.xAtt = this.xDef = this.xSpAtt = this.xSpDef = this.xSpeed = 0; // Reset stats
+		this.wave = this.xHp = this.xAtt = this.xDef = this.xSpAtt = this.xSpDef = this.xSpeed = 0; // Reset stats
 	}
 
 	public void resetGame() {
@@ -76,7 +77,6 @@ public class GameController {
 	public void setxDef(int xDef) {
 		this.xDef = xDef;
 	}
-
 
 	public ArrayList<BasePal> getPals() {
 		return pals;
