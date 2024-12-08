@@ -1,5 +1,7 @@
 package logic.pal;
 
+import java.util.ArrayList;
+
 import logic.move.Move;
 import utils.Evolvable;
 import utils.MoveType;
@@ -44,6 +46,7 @@ public class Bulbasaur extends BasePal implements Evolvable {
 	@Override
 	public void initializeMoves() {
 		// TODO Auto-generated method stub
+		this.moves = new ArrayList<Move>();
 		this.moves.add(new Move("Tackle", Type.NORMAL, MoveType.PHYSICAL, 40, 100));
 		this.moves.add(new Move("Vine Whip", Type.GRASS, MoveType.PHYSICAL, 45, 100));
 	}
