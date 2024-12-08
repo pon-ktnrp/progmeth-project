@@ -49,7 +49,7 @@ public class MenuScene {
 		MenuItem itemStart = new MenuItem("START");
 		itemStart.setOnMouseClicked(event -> {
 
-			    Parent secondPage = SecondPage.createPage("Welcome to the START page!");
+			    Parent secondPage = StartPage.createPage();
 			    Scene newScene = new Scene(secondPage);
 
 			    // Get the current stage and set the new scene
