@@ -12,21 +12,21 @@ public abstract class BasePal {
 	protected Type type;
 	protected int level;
 	protected int exp;
+	protected int baseHp;
 	protected int maxHp;
 	protected int hp;
+	protected int baseAtk;
 	protected int atk;
+	protected int baseDef;
 	protected int def;
+	protected int baseSpAtk;
 	protected int spAtk;
+	protected int baseSpDef;
 	protected int spDef;
+	protected int baseSpd;
 	protected int spd;
 	protected ArrayList<Move> moves;
-	protected int captureRate;
-	protected int baseHp;
-	protected int baseAtk;
-	protected int baseDef;
-	protected int baseSpAtk;
-	protected int baseSpDef;
-	protected int baseSpd;
+	//protected int captureRate;
 	
 	//Pal's method
 	public BasePal(String name, Type type, int level){
@@ -42,6 +42,9 @@ public abstract class BasePal {
 	public void takeDamage(int damage) {
         this.hp -= damage;
         if (this.hp < 0) this.hp = 0;
+        if(isFainted()) {
+        	System.out.println(name + " is fainted.");
+        }
     }
 	
 	public void heal(int amount) {
@@ -96,12 +99,76 @@ public abstract class BasePal {
 		this.name = name;
 	}
 
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+	public int getBaseHp() {
+		return baseHp;
+	}
+
+	public void setBaseHp(int baseHp) {
+		this.baseHp = baseHp;
+	}
+
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
+	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	public int getBaseAtk() {
+		return baseAtk;
+	}
+
+	public void setBaseAtk(int baseAtk) {
+		this.baseAtk = baseAtk;
+	}
+
 	public int getAtk() {
 		return atk;
 	}
 
 	public void setAtk(int atk) {
 		this.atk = atk;
+	}
+
+	public int getBaseDef() {
+		return baseDef;
+	}
+
+	public void setBaseDef(int baseDef) {
+		this.baseDef = baseDef;
 	}
 
 	public int getDef() {
@@ -111,13 +178,29 @@ public abstract class BasePal {
 	public void setDef(int def) {
 		this.def = def;
 	}
-	
+
+	public int getBaseSpAtk() {
+		return baseSpAtk;
+	}
+
+	public void setBaseSpAtk(int baseSpAtk) {
+		this.baseSpAtk = baseSpAtk;
+	}
+
 	public int getSpAtk() {
 		return spAtk;
 	}
 
 	public void setSpAtk(int spAtk) {
 		this.spAtk = spAtk;
+	}
+
+	public int getBaseSpDef() {
+		return baseSpDef;
+	}
+
+	public void setBaseSpDef(int baseSpDef) {
+		this.baseSpDef = baseSpDef;
 	}
 
 	public int getSpDef() {
@@ -128,11 +211,27 @@ public abstract class BasePal {
 		this.spDef = spDef;
 	}
 
-	public Type getType() {
-		return type;
+	public int getBaseSpd() {
+		return baseSpd;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
+	public void setBaseSpd(int baseSpd) {
+		this.baseSpd = baseSpd;
+	}
+
+	public int getSpd() {
+		return spd;
+	}
+
+	public void setSpd(int spd) {
+		this.spd = spd;
+	}
+
+	public ArrayList<Move> getMoves() {
+		return moves;
+	}
+
+	public void setMoves(ArrayList<Move> moves) {
+		this.moves = moves;
 	}
 }

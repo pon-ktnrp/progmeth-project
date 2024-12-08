@@ -1,53 +1,63 @@
 package logic.item;
 
-import logic.pal.BasePal;
-
 public abstract class BaseItem {
     protected String name;
     protected String description;
     protected int quantity;
-
-    // Constructor
+    
+    public BaseItem(String name, String description) {
+    	setName(name);
+    	setDescription(description);
+    	setQuantity(1);
+    }
+    
     public BaseItem(String name, String description, int quantity) {
-        this.name = name;
-        this.description = description;
-        this.quantity = quantity;
+    	setName(name);
+    	setDescription(description);
+    	setQuantity(quantity);
     }
+    
 
-    // Abstract method for using the item
-    public abstract void use(BasePal target);
-
-    // Increase quantity
-    public void addQuantity(int amount) {
-        if (amount > 0) {
-            this.quantity += amount;
+	public String getName() {
+		return name;
+	}
+ 
+    public void setName(String name) {
+    	this.name = name;
+    	if (name.isBlank()) {
+            this.name = "Unnamed Item";
         }
     }
+    
 
-    // Decrease quantity
-    public void reduceQuantity(int amount) {
-        if (amount > 0) {
-            this.quantity -= amount;
-            if (this.quantity < 0) this.quantity = 0;
+	public String getDescription() {
+		return description;
+	}
+    
+    public void setDescription(String description) {
+    	this.description = description;
+    	if (name.isBlank()) {
+            this.name = "No Description Item";
         }
     }
-
-    // Check if the item can be used
-    public boolean canUse() {
-        return quantity > 0;
-    }
-
-    // Getters
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
+    
     public int getQuantity() {
-        return quantity;
+    	return quantity;
     }
+    
+    public void setQuantity(int quantity) {
+    	this.quantity = quantity;
+    	if(this.quantity < 0) {
+    		this.quantity = 0;
+    	}
+    }
+    
+    public void reduceQuantity(int amount) {
+    	setQuantity(getQuantity() - amount);
+    }
+
+	@Override
+	public abstract String toString();
+	
 }
 
