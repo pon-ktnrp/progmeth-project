@@ -37,11 +37,11 @@ public class main {
 //		
 //		balls.tryCapture(test);
 		sc = new Scanner(System.in);
-		System.out.println("|===============================================================|");
-		System.out.println("|=                   Choose your starter Pal                   =|");
-		System.out.println("|===============================================================|");
-		System.out.println("|=      <1> Bulbasaur     <2> Charmander     <3> Squirtle      =|");
-		System.out.println("|===============================================================|");
+		System.out.println("|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|");
+		System.out.println("|                    Choose your starter Pal                    |");
+		System.out.println("|---------------------------------------------------------------|");
+		System.out.println("|       <1> Bulbasaur     <2> Charmander     <3> Squirtle       |");
+		System.out.println("|_______________________________________________________________|");
 		int choice = inputCheck(1, 3);
 		switch(choice) {
 		case 1:
@@ -54,26 +54,69 @@ public class main {
 			instance.addPal(new Squirtle(5));
 			break;
 		}
+		instance.setSelectPal(0);
 		startGameFlow();
 	}
 	
 	public static void startGameFlow() {
-		instance.nextWave();
 		while(!instance.isGameover()) {
-			System.out.println("+---------------------------------------------------------------+");
-			System.out.println("                         Wave " + instance.getWave() + " Start!");
-			System.out.println("+---------------------------------------------------------------+");
+			instance.nextWave();
+			System.out.println("|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|");
+			System.out.println("|                        Wave " + instance.getWave() + " Start!");
+			System.out.println("|_______________________________________________________________|\n");
 			BasePal enemy = new Bulbasaur(5);
 			while(true) {
-				//System.out.println("|===============================================================|");
-				System.out.println("        My's " + instance.getPal(0).getName() + " HP:" + instance.getPal(0).getHp() + " Vs. Enemy's " + enemy.getName() + " HP:" + enemy.getHp());
-				System.out.println("|_______________________________________________________________|");
-				int move = inputCheck(0, instance.getPal(0).getMoves().size() - 1);
-				int enemyMove = new Random().nextInt(enemy.getMoves().size());
-				instance.getPal(0).useMove(move, enemy);
-				enemy.useMove(enemyMove, instance.getPal(0));
-				if (enemy.isFainted()) {
-					instance.nextWave();
+				System.out.println("|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|");
+				System.out.println("|    My's " + instance.getSelectPal().getName() + " HP:" + instance.getSelectPal().getHp() + "/" +  instance.getSelectPal().getMaxHp() + " Vs. Enemy's " + enemy.getName() + " HP:" + enemy.getHp() + "/" +  instance.getSelectPal().getMaxHp());
+				System.out.println("|---------------------------------------------------------------|");
+				System.out.println("|              <1> Battle     <2> Pals     <3> Bag              |");
+				System.out.println("|_______________________________________________________________|\n");
+				int action = inputCheck(1,3);
+				switch(action) {
+				case 1:
+					System.out.println("|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|");
+					System.out.println("| " + instance.getSelectPal().getName() + "'s Move");
+					for(int i = 0 ; i < instance.getSelectPal().getMoves().size() ; i++) {
+						System.out.println("| <" + (i+1) + "> " + instance.getSelectPal().getMoves().get(i).toString() );
+					}
+					System.out.println("|_______________________________________________________________|\n");
+					int move = inputCheck(1,instance.getSelectPal().getMoves().size());
+					int enemyMove = new Random().nextInt(enemy.getMoves().size());
+					
+					int selectedPalSpeed = instance.getSelectPal().getSpd();
+					if(selectedPalSpeed >= enemy.getSpd()) {
+						instance.getSelectPal().useMove(move-1, enemy);
+						enemy.useMove(enemyMove, instance.getPal(0));
+					}
+					else if(selectedPalSpeed < enemy.getSpd()) {
+						enemy.useMove(enemyMove, instance.getPal(0));
+						instance.getSelectPal().useMove(move-1, enemy);
+					}
+						
+					break;
+				case 2:
+					if(instance.getPals().size() <= 1) {
+						System.out.println("|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|");
+						System.out.println("|            *** Don't have enough Pal to switch ***            |");
+						System.out.println("|_______________________________________________________________|\n");
+						break;
+					}
+					System.out.println("|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|");
+					System.out.println("| Switch " + instance.getSelectPal().getName() + " to " );
+					for(int i = 0 ; i < instance.getPals().size() ; i++) {
+						if(!instance.getPal(i).equals(instance.getSelectPal())) {
+							System.out.println("| <" + (i+1) + "> " + instance.getPal(i).getName() );
+						}
+					}
+					System.out.println("|_______________________________________________________________|\n");
+					int switchToPal = inputCheck(1,instance.getPals().size());
+					instance.setSelectPal(switchToPal-1);
+					System.out.println("|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|");
+					System.out.println("|                  Already switch to " + instance.getSelectPal().getName());
+					System.out.println("|_______________________________________________________________|\n");
+					break;
+				}
+				if(enemy.isFainted()) {
 					break;
 				}
 			}
