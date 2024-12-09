@@ -57,4 +57,10 @@ public class Move {
         if (moveType.equals(Type.DRAGON) && !targetType.equals(Type.NORMAL)) return 1.25;
         return 1.0; // Neutral effectiveness
     }
+
+	@Override
+	public String toString() {
+		return name + ", Type:" + type + ", MoveType:" + moveType + ", Power:" + power + ", Accuracy:" + accuracy;
+	}
+    
 }

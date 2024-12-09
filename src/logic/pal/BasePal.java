@@ -74,12 +74,14 @@ public abstract class BasePal {
     }
 	
 	public void useMove(int moveIndex, BasePal target) {
-        if (moveIndex >= 0 && moveIndex < moves.size()) {
-            Move move = this.moves.get(moveIndex);
-            move.execute(this, target);
-        } else {
-            System.out.println("Invalid move!");
-        }
+		if (!isFainted()) {
+	        if (moveIndex >= 0 && moveIndex < moves.size()) {
+	            Move move = this.moves.get(moveIndex);
+	            move.execute(this, target);
+	        } else {
+	            System.out.println("Invalid move!");
+	        }
+		}
     }
 	
 	public void updateStat() {
