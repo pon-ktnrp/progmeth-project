@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import logic.game.GameController;
 
 public class StartPage {
 
@@ -33,8 +34,8 @@ public class StartPage {
         root.getChildren().add(backgroundImage);
 
         // Foreground Images
-        ImageView frontImage = createImageView("front/1.png", 287, 279, 502, 127);
-        ImageView backImage = createImageView("back/1.png", 287, 279, 84, 295);
+        ImageView frontImage = createImageView("front/"+GameController.getInstance().getPals().get(0).getName()+".png", 287, 279, 502, 127);
+        ImageView backImage = createImageView("back/"+GameController.getInstance().getPals().get(0).getName()+".png", 287, 279, 84, 295);
         root.getChildren().addAll(frontImage, backImage);
 
         // Rectangles
@@ -56,8 +57,8 @@ public class StartPage {
         ProgressBar expProgress = createProgressBar(554, 442, 268, 10, 0.0);
         root.getChildren().addAll(hpProgress1, hpProgress2, expProgress);
 
-        ImageView playerType = createImageView("type/GRASS.png", 52, 54, 436, 376);
-        ImageView enemyType = createImageView("type/GRASS.png", 52, 54, 394, 76);
+        ImageView playerType = createImageView("type/"+GameController.getInstance().getPals().get(0).getType()+".png", 52, 54, 436, 376);
+        ImageView enemyType = createImageView("type/"+GameController.getInstance().getPals().get(0).getType()+".png", 52, 54, 394, 76);
         root.getChildren().addAll(playerType, enemyType);
 
         // Buttons
@@ -78,12 +79,12 @@ public class StartPage {
         expText.setStrokeWidth(1);
         root.getChildren().addAll(hpText1, hpText2, expText);
         
-        Text playerName = createText("Bulbasaur", 71, 110, "WHITE", 25);
-        Text playerLevel = createText("Lv.5", 290, 110, "WHITE", 25);
+        Text playerName = createText(GameController.getInstance().getPals().get(0).getName(), 71, 110, "WHITE", 25);
+        Text playerLevel = createText("Lv." + GameController.getInstance().getPals().get(0).getLevel(), 290, 110, "WHITE", 25);
         Text enemyName = createText("Bulbasaur", 486, 384, "WHITE", 25);
         Text enemyLevel = createText("Lv.5", 694, 383, "WHITE", 25);
         Text levelFractionText = createText("12/23", 694, 436, "WHITE", 25);
-        Text context = createText("What will Bulbasaur do?", 42, 503, "WHITE", 25);
+        Text context = createText("What will " + GameController.getInstance().getPals().get(0).getName() + " do?", 42, 503, "WHITE", 25);
         root.getChildren().addAll(playerName, playerLevel, enemyLevel, enemyName, levelFractionText,context);
 
         return root;
