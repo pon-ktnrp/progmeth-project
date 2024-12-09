@@ -74,12 +74,14 @@ public abstract class BasePal {
     }
 	
 	public void useMove(int moveIndex, BasePal target) {
-        if (moveIndex >= 0 && moveIndex < moves.size()) {
-            Move move = this.moves.get(moveIndex);
-            move.execute(this, target);
-        } else {
-            System.out.println("Invalid move!");
-        }
+		if (!isFainted()) {
+	        if (moveIndex >= 0 && moveIndex < moves.size()) {
+	            Move move = this.moves.get(moveIndex);
+	            move.execute(this, target);
+	        } else {
+	            System.out.println("Invalid move!");
+	        }
+		}
     }
 	
 	public void updateStat() {
@@ -234,4 +236,13 @@ public abstract class BasePal {
 	public void setMoves(ArrayList<Move> moves) {
 		this.moves = moves;
 	}
+
+	@Override
+	public String toString() {
+		return "BasePal [name=" + name + ", type=" + type + ", level=" + level + ", exp=" + exp + ", baseHp=" + baseHp
+				+ ", maxHp=" + maxHp + ", hp=" + hp + ", baseAtk=" + baseAtk + ", atk=" + atk + ", baseDef=" + baseDef
+				+ ", def=" + def + ", baseSpAtk=" + baseSpAtk + ", spAtk=" + spAtk + ", baseSpDef=" + baseSpDef
+				+ ", spDef=" + spDef + ", baseSpd=" + baseSpd + ", spd=" + spd + ", moves=" + moves + "]";
+	}
+	
 }
