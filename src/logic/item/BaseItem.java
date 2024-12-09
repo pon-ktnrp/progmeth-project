@@ -1,5 +1,7 @@
 package logic.item;
 
+import logic.pal.BasePal;
+
 public abstract class BaseItem {
     protected String name;
     protected String description;
@@ -17,7 +19,8 @@ public abstract class BaseItem {
     	setQuantity(quantity);
     }
     
-
+    public abstract void use(BasePal target);
+    
 	public String getName() {
 		return name;
 	}
@@ -39,6 +42,10 @@ public abstract class BaseItem {
     	if (name.isBlank()) {
             this.name = "No Description Item";
         }
+    }
+    
+    public void addQuantity(int amount) {
+    	this.quantity += amount;
     }
     
     public int getQuantity() {
