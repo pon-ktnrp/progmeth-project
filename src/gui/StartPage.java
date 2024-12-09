@@ -88,8 +88,6 @@ public class StartPage {
         Text pocket = createText("$"+Integer.toString(instance.getPocket()), 690, 70, "WHITE", 25);
         pocket.setStroke(Color.BLACK);
         pocket.setStrokeWidth(1);
-        Text playerName = createText("Bulbasaur", 71, 110, "WHITE", 25);
-        Text playerLevel = createText("Lv.5", 290, 110, "WHITE", 25);
         Text playerName = createText(GameController.getInstance().getPals().get(0).getName(), 71, 110, "WHITE", 25);
         Text playerLevel = createText("Lv." + GameController.getInstance().getPals().get(0).getLevel(), 290, 110, "WHITE", 25);
         Text enemyName = createText("Bulbasaur", 486, 384, "WHITE", 25);
