@@ -9,8 +9,6 @@ public abstract class BaseConsumption extends BaseItem{
 		super(name,description,quantity);
 		setEffectValue(effectValue);
 	}
-	
-	public abstract void use(BasePal target);
 
 	public int getEffectValue() {
 		return effectValue;

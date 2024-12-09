@@ -55,6 +55,9 @@ public class main {
 			break;
 		}
 		instance.setSelectPal(0);
+		instance.addItem(new Potion(10));
+		instance.addItem(new Potion(1));
+		instance.addItem(new Revive(5));
 		startGameFlow();
 	}
 	
@@ -115,6 +118,22 @@ public class main {
 					System.out.println("|                  Already switch to " + instance.getSelectPal().getName());
 					System.out.println("|_______________________________________________________________|\n");
 					break;
+				case 3:
+					System.out.println("|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|");
+					System.out.println("|                   What item you want to use                   |");
+					for(int i = 0 ; i < instance.getItems().size() ; i++) {
+						System.out.println("| <" + (i+1) + "> " + instance.getItem(i).getName() + "x" + instance.getItem(i).getQuantity());
+					}
+					System.out.println("|_______________________________________________________________|\n");
+					int useItem = inputCheck(1,instance.getItems().size());
+					System.out.println("|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|");
+					System.out.println("|                            Use on                             |");
+					for(int i = 0 ; i < instance.getPals().size() ; i++) {
+						System.out.println("| <" + (i+1) + "> " + instance.getPal(i).getName() );
+					}
+					System.out.println("|_______________________________________________________________|\n");
+					int usePal = inputCheck(1,instance.getPals().size());
+					instance.getItem(useItem-1).use(instance.getPal(usePal-1));
 				}
 				if(enemy.isFainted()) {
 					break;

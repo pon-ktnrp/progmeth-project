@@ -43,4 +43,10 @@ public class BaseCapture extends BaseItem{
 		return "BaseCapture [name = " + name + " description = " + description + " captureRate = " + captureRate +
 		" quantity = " + quantity + "]" ;
 	}
+
+	@Override
+	public void use(BasePal target) {
+		// TODO Auto-generated method stub
+		
+	}
 }
