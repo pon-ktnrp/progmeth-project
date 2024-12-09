@@ -15,10 +15,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import logic.game.GameController;
 
 public class StartPage {
 
     public static Parent createPage() {
+    	GameController instance = GameController.getInstance(); 
         AnchorPane root = new AnchorPane();
         root.setPrefSize(860, 600);
 
@@ -30,6 +32,8 @@ public class StartPage {
 
         // Background Image
         ImageView backgroundImage = createImageView("field1.jpg", 860, 600, 0, 0);
+	    backgroundImage.fitWidthProperty().bind(root.widthProperty());
+	    backgroundImage.fitHeightProperty().bind(root.heightProperty());
         root.getChildren().add(backgroundImage);
 
         // Foreground Images
@@ -78,13 +82,19 @@ public class StartPage {
         expText.setStrokeWidth(1);
         root.getChildren().addAll(hpText1, hpText2, expText);
         
+        Text wave = createText("Wave 1/50", 690, 36, "WHITE", 25);
+        wave.setStroke(Color.BLACK);
+        wave.setStrokeWidth(1);
+        Text pocket = createText("$"+Integer.toString(instance.getPocket()), 690, 70, "WHITE", 25);
+        pocket.setStroke(Color.BLACK);
+        pocket.setStrokeWidth(1);
         Text playerName = createText("Bulbasaur", 71, 110, "WHITE", 25);
         Text playerLevel = createText("Lv.5", 290, 110, "WHITE", 25);
         Text enemyName = createText("Bulbasaur", 486, 384, "WHITE", 25);
         Text enemyLevel = createText("Lv.5", 694, 383, "WHITE", 25);
         Text levelFractionText = createText("12/23", 694, 436, "WHITE", 25);
         Text context = createText("What will Bulbasaur do?", 42, 503, "WHITE", 25);
-        root.getChildren().addAll(playerName, playerLevel, enemyLevel, enemyName, levelFractionText,context);
+        root.getChildren().addAll(playerName, playerLevel, enemyLevel, enemyName, levelFractionText,context,wave,pocket);
 
         return root;
     }

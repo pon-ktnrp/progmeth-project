@@ -94,5 +94,15 @@
             <Font name="OCR A Extended" size="25.0" />
          </font>
       </Text>
+      <Text fill="WHITE" layoutX="702.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Wave 1/50">
+         <font>
+            <Font name="OCR A Extended" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="781.0" layoutY="70.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="\$100">
+         <font>
+            <Font name="OCR A Extended" size="25.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
