@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
@@ -15,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import logic.game.GameController;
 
 public class StartPage {
@@ -37,7 +41,11 @@ public class StartPage {
         root.getChildren().add(backgroundImage);
 
         // Foreground Images
-        ImageView frontImage = createImageView("front/"+GameController.getInstance().getEnemy().get(0).getName()+".png", 287, 279, 502, 127);
+        ImageView frontImage = createImageView("front/" + instance.getEnemy().get(0).getName() + ".png", 287, 279, 502, 127);
+        frontImage.setLayoutX(502); // Ensure layout is set properly
+        frontImage.setLayoutY(127);// Start off-screen
+        addSlideInAnimation(frontImage, 502, 127,860); // Animate to the target position
+
         ImageView backImage = createImageView("back/"+GameController.getInstance().getPals().get(0).getName()+".png", 287, 279, 84, 295);
         root.getChildren().addAll(frontImage, backImage);
 
@@ -97,11 +105,48 @@ public class StartPage {
         Text enemyLevel = createText("Lv." + GameController.getInstance().getEnemy().get(0).getLevel(), 290, 110, "WHITE", 25);
 
         Text levelFractionText = createText((GameController.getInstance().getPals().get(0).getExp())+"/"+(GameController.getInstance().getPals().get(0).getExpThreshold()), 694, 436, "WHITE", 25);
-        Text context = createText("What will " + GameController.getInstance().getPals().get(0).getName() + " do?", 42, 503, "WHITE", 25);
+        Text context = createText("", 42, 503, "WHITE", 25);
         root.getChildren().addAll(playerName, playerLevel, enemyLevel, enemyName, levelFractionText,context,wave,pocket);
+        
+        addWriteOnAnimation(context, "What will " + GameController.getInstance().getPals().get(0).getName() + " do?", Duration.seconds(1.5));
 
         return root;
     }
+    
+    private static void addWriteOnAnimation(Text textNode, String fullText, Duration duration) {
+        int textLength = fullText.length();
+        Timeline timeline = new Timeline();
+
+        for (int i = 0; i <= textLength; i++) {
+            final int currentIndex = i;
+            KeyFrame keyFrame = new KeyFrame(
+                duration.divide(textLength).multiply(currentIndex),
+                e -> textNode.setText(fullText.substring(0, currentIndex))
+            );
+            timeline.getKeyFrames().add(keyFrame);
+        }
+
+        timeline.play();
+    }
+
+    
+    private static void addSlideInAnimation(ImageView imageView, double targetX, double targetY, double screenWidth) {
+        TranslateTransition slideIn = new TranslateTransition();
+        slideIn.setNode(imageView);
+        slideIn.setDuration(Duration.seconds(1.5)); // Duration of the animation
+
+        // Start off-screen on the right
+        slideIn.setFromX(screenWidth); // Screen width to ensure it's off the right edge
+        slideIn.setToX(targetX - imageView.getLayoutX()); // Target position relative to layout
+
+        // Vertical movement (optional, if needed)
+        slideIn.setFromY(targetY - imageView.getLayoutY());
+        slideIn.setToY(targetY - imageView.getLayoutY());
+
+        slideIn.play(); // Start the animation
+    }
+
+
 
     private static Rectangle createRectangle(double x, double y, double width, double height, String fillColor, String strokeColor, double strokeWidth) {
         Rectangle rect = new Rectangle(width, height);
