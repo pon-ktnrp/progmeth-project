@@ -2,6 +2,7 @@ package logic.pal;
 
 import java.util.ArrayList;
 
+import logic.game.GameController;
 import logic.move.Move;
 import utils.Type;
 
@@ -85,7 +86,7 @@ public abstract class BasePal {
     }
 	
 	public void updateStat() {
-		this.maxHp = (int) (0.02 * baseHp * level) + baseHp + 10;
+		this.maxHp = (int) (0.02 * baseHp * level  ) + baseHp + 10;
         this.atk = (int) (0.02 * baseAtk * level) + 5;
         this.def = (int) (0.02 * baseDef * level) + 5;
         this.spAtk = (int) (0.02 * baseSpAtk * level) + 5;

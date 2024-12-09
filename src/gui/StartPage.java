@@ -37,7 +37,7 @@ public class StartPage {
         root.getChildren().add(backgroundImage);
 
         // Foreground Images
-        ImageView frontImage = createImageView("front/"+GameController.getInstance().getPals().get(0).getName()+".png", 287, 279, 502, 127);
+        ImageView frontImage = createImageView("front/"+GameController.getInstance().getEnemy().get(0).getName()+".png", 287, 279, 502, 127);
         ImageView backImage = createImageView("back/"+GameController.getInstance().getPals().get(0).getName()+".png", 287, 279, 84, 295);
         root.getChildren().addAll(frontImage, backImage);
 
@@ -51,17 +51,20 @@ public class StartPage {
         root.getChildren().addAll(infoBox1, infoBox2);
 
         Rectangle hpBar1 = createRectangle(60, 127, 360, 12, "WHITE", "BLACK", 0);
+
         Rectangle hpBar2 = createRectangle(462, 391, 360, 12, "WHITE", "BLACK", 0);
         root.getChildren().addAll(hpBar1, hpBar2);
 
         // ProgressBars
-        ProgressBar hpProgress1 = createProgressBar(251, 129, 139, 10, 0.0);
-        ProgressBar hpProgress2 = createProgressBar(656, 392, 139, 10, 0.0);
-        ProgressBar expProgress = createProgressBar(554, 442, 268, 10, 0.0);
+        ProgressBar hpProgress1 = createProgressBar(251, 129, 139, 10, Double.valueOf(GameController.getInstance().getEnemy().get(0).getHp())/Double.valueOf(GameController.getInstance().getEnemy().get(0).getMaxHp()));
+        ProgressBar hpProgress2 = createProgressBar(656, 392, 139, 10, Double.valueOf(GameController.getInstance().getPals().get(0).getHp())/Double.valueOf(GameController.getInstance().getPals().get(0).getMaxHp()));
+        ProgressBar expProgress = createProgressBar(554, 442, 268, 10, GameController.getInstance().getPals().get(0).getExp()/GameController.getInstance().getPals().get(0).getExpThreshold());
+        hpProgress1.setStyle("-fx-accent: green;");
+        hpProgress2.setStyle("-fx-accent: green;");
         root.getChildren().addAll(hpProgress1, hpProgress2, expProgress);
 
         ImageView playerType = createImageView("type/"+GameController.getInstance().getPals().get(0).getType()+".png", 52, 54, 436, 376);
-        ImageView enemyType = createImageView("type/"+GameController.getInstance().getPals().get(0).getType()+".png", 52, 54, 394, 76);
+        ImageView enemyType = createImageView("type/"+GameController.getInstance().getEnemy().get(0).getType()+".png", 52, 54, 394, 76);
         root.getChildren().addAll(playerType, enemyType);
 
         // Buttons
@@ -88,13 +91,14 @@ public class StartPage {
         Text pocket = createText("$"+Integer.toString(instance.getPocket()), 690, 70, "WHITE", 25);
         pocket.setStroke(Color.BLACK);
         pocket.setStrokeWidth(1);
-        Text playerName = createText(GameController.getInstance().getPals().get(0).getName(), 71, 110, "WHITE", 25);
-        Text playerLevel = createText("Lv." + GameController.getInstance().getPals().get(0).getLevel(), 290, 110, "WHITE", 25);
-        Text enemyName = createText("Bulbasaur", 486, 384, "WHITE", 25);
-        Text enemyLevel = createText("Lv.5", 694, 383, "WHITE", 25);
-        Text levelFractionText = createText("12/23", 694, 436, "WHITE", 25);
+        Text playerName = createText(GameController.getInstance().getPals().get(0).getName(), 486, 384, "WHITE", 25);
+        Text playerLevel = createText("Lv." + GameController.getInstance().getPals().get(0).getLevel(), 694, 383, "WHITE", 25);
+        Text enemyName = createText(GameController.getInstance().getEnemy().get(0).getName(), 71, 110, "WHITE", 25);		
+        Text enemyLevel = createText("Lv." + GameController.getInstance().getEnemy().get(0).getLevel(), 290, 110, "WHITE", 25);
+
+        Text levelFractionText = createText((GameController.getInstance().getPals().get(0).getExp())+"/"+(GameController.getInstance().getPals().get(0).getExpThreshold()), 694, 436, "WHITE", 25);
         Text context = createText("What will " + GameController.getInstance().getPals().get(0).getName() + " do?", 42, 503, "WHITE", 25);
-        root.getChildren().addAll(playerName, playerLevel, enemyLevel, enemyName, levelFractionText,context);
+        root.getChildren().addAll(playerName, playerLevel, enemyLevel, enemyName, levelFractionText,context,wave,pocket);
 
         return root;
     }

@@ -22,6 +22,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Map;
+
 import logic.game.GameController;
 import logic.pal.*;
 
@@ -107,8 +109,11 @@ public class SelectPalPage {
         // Button
         Button selectButton = new Button("Select");
         selectButton.setOnAction(e -> {
-            GameController.getInstance().getPals().add(pal);
+            GameController.getInstance().addPals(pal);
             System.out.println(GameController.getInstance().getPals().get(0));
+            for(Map.Entry m : GameController.getInstance().getItems().entrySet()){    
+                System.out.println(m.getKey()+" "+m.getValue());    
+               }  
 		    Parent secondPage = StartPage.createPage();
 		    Scene newScene = new Scene(secondPage);
 
