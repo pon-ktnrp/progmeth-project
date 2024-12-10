@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.game.GameController;
 import logic.pal.BasePal;
+import logic.state.*;
 
 public class StartPage {
 
@@ -202,11 +203,25 @@ public class StartPage {
 			// Check if the enemy is defeated
 			if (enemy.getHp() <= 0) {
 				instance.nextWave();
+				if(instance.getWave()<=10) {
+					instance.getEnemy().add(StateRoute1.generateRandomPal((5+instance.getWave()*45/50)));
+				}
+				else if(instance.getWave()<=20) {
+					instance.getEnemy().add(StateRoute2.generateRandomPal((5+instance.getWave()*45/50)));
+				}
+				else if(instance.getWave()<=30) {
+					instance.getEnemy().add(StateRoute3.generateRandomPal((5+instance.getWave()*45/50)));
+				}
+				else if(instance.getWave()<=40) {
+					instance.getEnemy().add(StateRoute4.generateRandomPal((5+instance.getWave()*45/50)));
+				}
+				else {
+					instance.getEnemy().add(StateRoute5.generateRandomPal((5+instance.getWave()*45/50)));
+				}
 				if (instance.getWave() > 50) {
 					context.setText("You Win!");
 					return; // Stop game loop; game over
 				}
-
 				loadNextEnemy();
 			}
 
