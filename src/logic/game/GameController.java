@@ -59,11 +59,11 @@ public class GameController {
 //		this.enemy.add(new Bulbasaur(3));
 //		this.enemy.add(new Exeggutor(3));
 		this.enemy.add(StateRoute1.generateRandomPal(1));
-		addItem(new PalBall(0));
-		addItem(new PokeBall(0));
-		addItem(new Potion(0));
-		addItem(new SuperPotion(0));
-		addItem(new Revive(0));
+		addItem(new PalBall(5));
+		addItem(new PokeBall(1));
+		addItem(new Potion(5));
+		addItem(new SuperPotion(1));
+		addItem(new Revive(1));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
@@ -103,11 +103,11 @@ public class GameController {
 
 	    // Generate a new set of enemies and items
 	    this.enemy.add(StateRoute1.generateRandomPal(1));
-	    addItem(new PalBall(0));
-	    addItem(new PokeBall(0));
-	    addItem(new Potion(0));
-	    addItem(new SuperPotion(0));
-	    addItem(new Revive(0));
+	    addItem(new PalBall(5));
+	    addItem(new PokeBall(1));
+	    addItem(new Potion(5));
+	    addItem(new SuperPotion(1));
+	    addItem(new Revive(1));
 
 	}
 

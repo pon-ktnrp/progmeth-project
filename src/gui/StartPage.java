@@ -627,7 +627,7 @@ public class StartPage {
 					if (player.isFainted()) {
 
 						if(instance.isGameOver()) {
-							instance.setMoney(instance.getMoney()+instance.getWave()*10);
+							instance.setMoney(instance.getMoney()+instance.getPocket()/100);
 							
 							if(instance.getWave()>50) {
 								Win content = new Win();
