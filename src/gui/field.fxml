@@ -89,11 +89,6 @@
             <Font name="OCR A Extended" size="25.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="42.0" layoutY="503.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="What will Bulbasaur do?">
-         <font>
-            <Font name="OCR A Extended" size="25.0" />
-         </font>
-      </Text>
       <Text fill="WHITE" layoutX="702.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Wave 1/50">
          <font>
             <Font name="OCR A Extended" size="25.0" />
@@ -104,5 +99,9 @@
             <Font name="OCR A Extended" size="25.0" />
          </font>
       </Text>
+      <Button layoutX="10.0" layoutY="469.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill1" />
+      <Button layoutX="303.0" layoutY="469.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill2" />
+      <Button layoutX="303.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill4" />
+      <Button layoutX="10.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill3" />
    </children>
 </AnchorPane>

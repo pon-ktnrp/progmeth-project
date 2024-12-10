@@ -54,6 +54,7 @@ public class GameController {
 		this.enemy.add(new Bulbasaur(3));
 		this.enemy.add(new Charmander(3));
 		this.enemy.add(new Squirtle(3));
+		this.enemy.add(new Bulbasaur(3));
 		
 	}
 

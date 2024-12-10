@@ -1,7 +1,7 @@
 package logic.item;
 
+import logic.game.GameController;
 import logic.pal.BasePal;
-import main.GameController;
 
 public class BaseCapture extends BaseItem{
 	protected double captureRate;
@@ -26,7 +26,7 @@ public class BaseCapture extends BaseItem{
 
         if (randomValue < captureChance) {
             System.out.println(target.getName() + " was captured!");
-            GameController.getInstance().addPal(target);
+            GameController.getInstance().addPals(target);
             return true; // Capture successful
         } else {
             System.out.println(target.getName() + " broke free!");
