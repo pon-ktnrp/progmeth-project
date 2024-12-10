@@ -3,7 +3,7 @@ package logic.item;
 import logic.game.GameController;
 import logic.pal.BasePal;
 
-public class BaseCapture extends BaseItem{
+public abstract class BaseCapture extends BaseItem{
 	protected double captureRate;
 	
 	public BaseCapture(String name, String description, double captureRate, int quantity) {

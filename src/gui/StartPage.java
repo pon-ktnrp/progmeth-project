@@ -630,14 +630,14 @@ public class StartPage {
 							instance.setMoney(instance.getMoney()+instance.getPocket()/100);
 							
 							if(instance.getWave()>50) {
-								Win content = new Win();
+								WinPage content = new WinPage();
 								Scene scene = new Scene(content.createPage());
 								Stage stage = Main.getStage();
 								stage.setScene(scene);
 								gameLoop.stop();
 								
 							}else {
-								Gameover content = new Gameover();
+								GameoverPage content = new GameoverPage();
 								Scene scene = new Scene(content.createPage());
 								Stage stage = Main.getStage();
 								stage.setScene(scene);
