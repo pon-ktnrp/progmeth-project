@@ -211,14 +211,29 @@ public class PokemonScene {
 		});
 		
         pane.setOnMouseClicked(e -> {
-        	instance.setSelectPal(index);
-		    Parent secondPage = StartPage.createPage();
-		    Scene newScene = new Scene(secondPage);
+		    
+		    if (index == instance.getSelectPal()) {
+	        	instance.setSelectPal(index);
+			    Parent secondPage = StartPage.createPage();
+			    Scene newScene = new Scene(secondPage);
 
-		    // Get the current stage and set the new scene
-		    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-		    stage.setScene(newScene);
-		    StartPage.setPlayerTurn(false);
+			    // Get the current stage and set the new scene
+			    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+			    stage.setScene(newScene);
+
+			    StartPage.setPlayerTurn(true);
+		    }else {
+	        	instance.setSelectPal(index);
+			    Parent secondPage = StartPage.createPage();
+			    Scene newScene = new Scene(secondPage);
+
+			    // Get the current stage and set the new scene
+			    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+			    stage.setScene(newScene);
+			    StartPage.setPlayerTurn(false);
+		    }
+
+
         });
 
         return pane;
