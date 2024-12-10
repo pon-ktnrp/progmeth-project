@@ -22,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import logic.game.GameController;
 import logic.pal.BasePal;
+import logic.state.StateRoute1;
 
 public class StartPage {
 
@@ -187,7 +188,7 @@ public class StartPage {
 					context.setText("You Win!");
 					return; // Stop game loop; game over
 				}
-
+				instance.getEnemy().add(StateRoute1.generateRandomPal((5+instance.getWave()*50/45)));
 				loadNextEnemy();
 			}
 
