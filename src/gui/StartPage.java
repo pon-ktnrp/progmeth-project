@@ -318,7 +318,8 @@ public class StartPage {
 			GameController instance = GameController.getInstance();
 			BasePal enemy = instance.getEnemy().get(instance.getWave() - 1);
 			player = instance.getPals().get(instance.getSelectPal());
-			
+			animateHpBar(expProgress, Double.valueOf(player.getExp())/ Double.valueOf(enemy.getExpThreshold()), Duration.seconds(0.5));
+		
 			item1.setOnAction(actionEvent -> {
 				BaseCapture item= (BaseCapture) instance.getItem(0);
 				capture =item.tryCapture(enemy);
@@ -568,7 +569,6 @@ public class StartPage {
 				levelFractionText.setText(player.getHp()+"/"+player.getMaxHp());
 				animateHpBar(hpProgress1, Double.valueOf(enemy.getHp())/ Double.valueOf(enemy.getMaxHp()), Duration.seconds(0.5));
 				animateHpBar(hpProgress2, Double.valueOf(player.getHp())/ Double.valueOf(player.getMaxHp()), Duration.seconds(0.5));
-				animateHpBar(expProgress, Double.valueOf(player.getExp())/ Double.valueOf(enemy.getExpThreshold()), Duration.seconds(0.5));
 				setPlayerTurn(true);
 
 			    PauseTransition pause = new PauseTransition(Duration.seconds(1.6));
@@ -579,7 +579,7 @@ public class StartPage {
 						}
 						int multi =new Random().nextInt(instance.getWave());
 						multi = Math.max(5, multi);
-						player.gainExp(enemy.getLevel()*10*multi);
+						player.gainExp(enemy.getLevel()*1000);
 						playerLevel.setText("Lv."+player.getLevel());
 						if (player instanceof Evolvable) {
 							if(((Evolvable) player).isEvolvable()) {
@@ -626,7 +626,12 @@ public class StartPage {
 					if (player.isFainted()) {
 
 						if(instance.isGameOver()) {
-							return;
+							instance.setMoney(instance.getMoney()+instance.getWave()*10);
+							if(instance.getWave()>50) {
+								
+							}else {
+								
+							}
 						}else {
 							for (int i=0;i<instance.getPals().size();i++) {
 								if (!instance.getPal(i).isFainted()) {
