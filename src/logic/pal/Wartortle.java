@@ -9,7 +9,7 @@ public class Wartortle extends BasePal implements Evolvable {
 	private final int evolutionLevel = 36 ;
 	
 	public Wartortle(int level) {
-		super("Wartortle",Type.GRASS,level);
+		super("Wartortle",Type.WATER,level);
 		initializeStats();
 		initializeMoves();
 	}
