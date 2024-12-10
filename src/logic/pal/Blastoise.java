@@ -7,7 +7,7 @@ import utils.Type;
 public class Blastoise extends BasePal {
 	
 	public Blastoise(int level) {
-		super("Blastoise",Type.GRASS,level);
+		super("Blastoise",Type.WATER,level);
 		initializeStats();
 		initializeMoves();
 	}

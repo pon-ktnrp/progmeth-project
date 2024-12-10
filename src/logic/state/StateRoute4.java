@@ -6,7 +6,7 @@ import logic.pal.*;
 
 public class StateRoute4 {
 	private static final Class<?>[] PAL_CLASSES = {
-			Snorlax.class, Dragonair.class, Exeggutor.class, Scizor.class, Arcanine.class, Ninetales.class, Staryu.class, Gyarados.class
+			Snorlax.class, Dragonair.class, Exeggutor.class, Scizor.class, Arcanine.class, Ninetales.class, Starmie.class, Gyarados.class
 	};
 	
 	public static BasePal generateRandomPal(int level) {

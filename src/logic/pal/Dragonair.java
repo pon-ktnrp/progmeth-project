@@ -10,7 +10,7 @@ public class Dragonair extends BasePal implements Evolvable {
 	private final int evolutionLevel = 45 ;
 	
 	public Dragonair(int level) {
-		super("Dratini",Type.DRAGON,level);
+		super("Dragonair",Type.DRAGON,level);
 		initializeStats();
 		initializeMoves();
 	}

@@ -7,7 +7,7 @@ import logic.pal.*;
 public class StateRoute2 {
 	private static final Class<?>[] PAL_CLASSES = {
 			Metapod.class, Pidgeotto.class, Raticate.class, Fearow.class, Persian.class, Linoone.class, Bibarel.class,
-			Exeggcute.class, Scyther.class, Growlithe.class, Vulpix.class, Starmie.class, Magikarp.class
+			Exeggcute.class, Scyther.class, Growlithe.class, Vulpix.class, Staryu.class, Magikarp.class
 	};
 	
 	public static BasePal generateRandomPal(int level) {
