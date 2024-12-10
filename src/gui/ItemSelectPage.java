@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,6 +23,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logic.game.GameController;
+import logic.item.BaseConsumption;
 import logic.pal.BasePal;
 import logic.pal.Charmander;
 import logic.pal.Squirtle;
@@ -29,7 +31,7 @@ import logic.pal.Squirtle;
 public class ItemSelectPage {
 	private static BasePal target;
 	private static int position;
-
+	private static BaseConsumption item;
     public static Parent createContent(int index,BasePal entity) {
     	target = entity;
     	position = index;
@@ -82,6 +84,60 @@ public class ItemSelectPage {
 	    itemExit.setTranslateX(75);
 	    itemExit.setTranslateY(500);
 
+        return root;
+    }
+    public static Parent createContent(int index,BaseConsumption loaditem) {
+    	position = index;
+    	item = loaditem;
+    	GameController instance = GameController.getInstance();
+        AnchorPane root = new AnchorPane();
+        root.setPrefSize(860, 600);
+
+        // Background Image
+        ImageView img = new ImageView();
+        try {
+            String bgPath = ClassLoader.getSystemResource("bg1.jpg").toString();
+            img.setImage(new Image(bgPath));
+        } catch (Exception e) {
+            System.out.println("Couldn't load background image.");
+        }
+        img.fitWidthProperty().bind(root.widthProperty());
+        img.fitHeightProperty().bind(root.heightProperty());
+        root.getChildren().add(img);
+
+        // Creating Pokemon Info Panels
+        int size = instance.getPals().size();
+        if (size>=1) {
+        	root.getChildren().add(createPokemonPanel(0, 13,0));
+        }
+        if (size >=2) {
+        	root.getChildren().add(createPokemonPanel(390, 83,1));        	
+        }
+        if (size>=3) {
+        	root.getChildren().add(createPokemonPanel(0, 160,2));        	
+        }
+        if (size>=4) {
+        	root.getChildren().add(createPokemonPanel(390, 246,3));       	
+        }
+        if (size>=5) {
+        	root.getChildren().add(createPokemonPanel(0, 314,4));        	
+        }if (size ==6) {
+        	root.getChildren().add(createPokemonPanel(390, 384,5));        	
+        }
+	    Back itemExit = new Back("BACK");
+	    itemExit.setOnMouseClicked(e -> {
+		    Parent secondPage = StartPage.createPage();
+		    Scene newScene = new Scene(secondPage);
+
+		    // Get the current stage and set the new scene
+		    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		    stage.setScene(newScene);
+	    });
+	    
+	    
+	    itemExit.setTranslateX(75);
+	    itemExit.setTranslateY(500);
+	    root.getChildren().add(itemExit);
         return root;
     }
 
@@ -222,6 +278,48 @@ public class ItemSelectPage {
 			    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 			    stage.setScene(newScene);
 			    StartPage.setPlayerTurn(true);
+	        });
+		}
+		pane.setOnMouseReleased(event -> {
+			bg.setFill(gradient);
+		});
+		if (position==2) {
+	        pane.setOnMouseClicked(e -> {
+	        	if (item.getName()=="Revive") {
+	        		if (!instance.getPal(index).isFainted()) {
+	    				Alert alert = new Alert(Alert.AlertType.ERROR);
+	    				alert.setTitle("Failure");
+	    				alert.setHeaderText(null); // No header text
+	    				alert.setContentText("Can't use revive.");
+	    				alert.showAndWait(); // Wait for the user to close the dialog
+	        		}else {
+			        	item.use(instance.getPal(index));
+					    Parent secondPage = StartPage.createPage();
+					    Scene newScene = new Scene(secondPage);	
+					    // Get the current stage and set the new scene
+					    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+					    stage.setScene(newScene);
+					    StartPage.setPlayerTurn(true);
+	        		}
+
+	        	}else {
+	        		if (instance.getPal(index).isFainted()) {
+	    				Alert alert = new Alert(Alert.AlertType.ERROR);
+	    				alert.setTitle("Failure");
+	    				alert.setHeaderText(null); // No header text
+	    				alert.setContentText("Can't use potion.");
+	    				alert.showAndWait(); // Wait for the user to close the dialog
+	        		}else {
+			        	item.use(instance.getPal(index));
+					    Parent secondPage = StartPage.createPage();
+					    Scene newScene = new Scene(secondPage);	
+					    // Get the current stage and set the new scene
+					    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+					    stage.setScene(newScene);
+					    StartPage.setPlayerTurn(true);
+	        		}
+	        	}
+
 	        });
 		}
 

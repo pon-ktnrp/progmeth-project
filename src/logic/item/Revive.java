@@ -13,6 +13,7 @@ public class Revive extends BaseConsumption {
 	public void use(BasePal target) {
 		// TODO Auto-generated method stub
 		if(target.isFainted()) {
+			reduceQuantity(1);
 			target.heal(target.getMaxHp() * getEffectValue()/100);
 			System.out.println(target.getName() + " was revive.");
 		}

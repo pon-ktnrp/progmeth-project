@@ -16,7 +16,9 @@ public class Potion extends BaseConsumption {
 			System.out.println("Can't heal fainted Pal.");
 		}
 		else {
+			reduceQuantity(1);
 			target.heal(target.getMaxHp() * getEffectValue()/100);
+			System.out.println("Heal");
 		}
 	}
 

@@ -60,10 +60,10 @@ public class GameController {
 //		this.enemy.add(new Exeggutor(3));
 		this.enemy.add(StateRoute1.generateRandomPal(5));
 		addItem(new PalBall(5));
-		addItem(new PokeBall(0));
-		addItem(new Potion(0));
-		addItem(new SuperPotion(0));
-		addItem(new Revive(0));
+		addItem(new PokeBall(5));
+		addItem(new Potion(5));
+		addItem(new SuperPotion(5));
+		addItem(new Revive(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
