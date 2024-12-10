@@ -54,15 +54,16 @@ public class GameController {
 		this.selectPal = 0;
 		this.wave = 1;
 		this.xHp = this.xAtt = this.xDef = this.xSpAtt = this.xSpDef = this.xSpeed = 0; // Reset stats
+//		this.enemy.add(new Charmander(3));
 		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
-//		this.enemy.add(new Charmander(3));
+
 //		this.enemy.add(new Squirtle(3));
-//		this.enemy.add(new Bulbasaur(3));
+
 		
 	}
 

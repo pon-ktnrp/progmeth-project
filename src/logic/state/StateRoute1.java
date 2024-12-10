@@ -20,6 +20,7 @@ public class StateRoute1 {
 
 	        } catch (Exception e) {
 	            e.printStackTrace();
+	            System.out.println("Error loading");
 	            throw new RuntimeException("Error generating random Pokémon.");
 	        }
 	}

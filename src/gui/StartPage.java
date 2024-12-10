@@ -150,6 +150,13 @@ public class StartPage {
 		root.getChildren().addAll(playerName, playerLevel, enemyLevel, enemyName, levelFractionText, context, wave,
 				pocket);
 		fightButton = createButton("Fight", 599, 469, 252, 52);
+		fightButton.setOnAction(e -> {
+			if (playerTurn) {
+				BasePal enemy = GameController.getInstance().getEnemy().get(GameController.getInstance().getWave()-1);
+				enemy.setHp(0); // Reduce HP or apply attack damage
+				// Switch to enemy turn
+			}
+		});
 		cageButton = createButton("Cage", 725, 524, 127, 52);
 		palButton = createButton("Pal", 598, 524, 127, 52);
 	    palButton.setOnMouseClicked(event -> {
@@ -182,7 +189,7 @@ public class StartPage {
 			if(instance.isGameOver()) {
 				return;
 			}
-			BasePal enemy = instance.getEnemy().get(instance.getWave());
+			BasePal enemy = instance.getEnemy().get(instance.getWave()-1);
 			BasePal player = instance.getPals().get(instance.getSelectPal());
 			if (playerTurn) {
 
@@ -241,7 +248,7 @@ public class StartPage {
 
 	private static void loadNextEnemy() {
 		GameController instance = GameController.getInstance();
-		int waveIndex = instance.getWave();
+		int waveIndex = instance.getWave()-1;
 
 
 		if (waveIndex < instance.getEnemy().size()) {

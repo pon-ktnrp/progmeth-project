@@ -192,21 +192,21 @@ public class PokemonScene {
 				new Stop[] { new Stop(0, Color.DARKVIOLET), new Stop(0.1, Color.BLACK), new Stop(0.9, Color.BLACK),
 						new Stop(1, Color.DARKVIOLET) });
 
-		bg.setOnMouseEntered(event -> {
+		pane.setOnMouseEntered(event -> {
 			bg.setFill(gradient);
 
 		});
 
-		bg.setOnMouseExited(event -> {
+		pane.setOnMouseExited(event -> {
 			bg.setFill(Color.web("#362d3e"));
 
 		});
 
-		bg.setOnMousePressed(event -> {
+		pane.setOnMousePressed(event -> {
 			bg.setFill(Color.DARKVIOLET);
 		});
 
-		bg.setOnMouseReleased(event -> {
+		pane.setOnMouseReleased(event -> {
 			bg.setFill(gradient);
 		});
 		

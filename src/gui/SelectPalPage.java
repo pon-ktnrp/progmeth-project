@@ -112,7 +112,6 @@ public class SelectPalPage {
             GameController.getInstance().addPals(pal);
             GameController.getInstance().addPals(pal);
             GameController.getInstance().addPals(pal);
-            GameController.getInstance().addPals(pal);
             GameController.getInstance().addPals(new Charmander(3));
             GameController.getInstance().addPals(new Squirtle(2));
             System.out.println(GameController.getInstance().getPals().get(0));
