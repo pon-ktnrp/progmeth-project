@@ -218,6 +218,7 @@ public class PokemonScene {
 		    // Get the current stage and set the new scene
 		    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 		    stage.setScene(newScene);
+		    StartPage.setPlayerTurn(false);
         });
 
         return pane;

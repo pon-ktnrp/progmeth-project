@@ -7,12 +7,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import gui.*;
 
+
 public class Main extends Application{
 
+	private static Stage stage;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		try {
+			setStage(primaryStage);
 			MenuScene content = new MenuScene();
 			Scene scene = new Scene(content.createContent());
 			primaryStage.setTitle("PalRogue");
@@ -26,6 +29,14 @@ public class Main extends Application{
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public static Stage getStage() {
+		return stage;
+	}
+
+	public static void setStage(Stage stage) {
+		Main.stage = stage;
 	}
 
 }

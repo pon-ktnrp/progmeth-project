@@ -57,6 +57,16 @@ public class Move {
         if (moveType.equals(Type.DRAGON) && !targetType.equals(Type.NORMAL)) return 1.25;
         return 1.0; // Neutral effectiveness
     }
+    
+    public String getTypeEffectivenessString(Type moveType, Type targetType) {
+        // Simplified type effectiveness (you can expand this with a full type chart)
+        if (moveType.equals(Type.FIRE) && targetType.equals(Type.GRASS)) return "It's super effective";
+        if (moveType.equals(Type.WATER) && targetType.equals(Type.FIRE)) return "It's super effective";
+        if (moveType.equals(Type.GRASS) && targetType.equals(Type.WATER)) return "It's super effective";
+        //if (moveType.equals(Type.NORMAL) && targetType.equals(Type.DRAGON)) return 2.0;
+        if (moveType.equals(Type.DRAGON) && !targetType.equals(Type.NORMAL)) return "It's effective";
+        return ""; // Neutral effectiveness
+    }
 
 	@Override
 	public String toString() {

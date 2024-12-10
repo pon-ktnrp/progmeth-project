@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Random;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
@@ -25,8 +27,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.game.GameController;
+import logic.move.Move;
 import logic.pal.BasePal;
 import logic.state.*;
+import main.Main;
 
 public class StartPage {
 
@@ -51,6 +55,13 @@ public class StartPage {
 	private static Button fightButton;
 	private static Button palButton;
 	private static Button cageButton;
+	private static Button skill1Button;
+	private static Button skill2Button;
+	private static Button skill3Button;
+	private static Button skill4Button;
+	private static Move skill;
+	private static int skillindex;
+	private static BasePal player;
 
 	GameController instance = GameController.getInstance();
 
@@ -59,9 +70,10 @@ public class StartPage {
 		AnchorPane root = new AnchorPane();
 		root.setPrefSize(860, 600);
 		playerTurn = true;
+		skill = null;
 		int playerindex = instance.getSelectPal();
-		int enemyindex = instance.getWave()-1;
-		
+		int enemyindex = instance.getWave() - 1;
+
 		// Background Rectangle
 		Rectangle background = new Rectangle(860, 600);
 		background.setFill(Color.web("#362d3e"));
@@ -75,13 +87,16 @@ public class StartPage {
 		root.getChildren().add(backgroundImage);
 
 		// Foreground Images
-		frontImage = createImageView("front/" + instance.getEnemy().get(enemyindex).getName() + ".png", 287, 279, 502, 127);
+		frontImage = createImageView("front/" + instance.getEnemy().get(enemyindex).getName() + ".png", 296, 250, 502,
+				55);
 		frontImage.setLayoutX(502); // Ensure layout is set properly
-		frontImage.setLayoutY(127);// Start off-screen
+		frontImage.setLayoutY(55);// Start off-screen
 		addSlideInAnimation(frontImage, 502, 127, 860); // Animate to the target position
 
-		backImage = createImageView("back/" + GameController.getInstance().getPals().get(playerindex).getName() + ".png", 287,
-				279, 84, 295);
+		backImage = createImageView(
+				"back/" + GameController.getInstance().getPals().get(playerindex).getName() + ".png", 287, 279, 84,
+				295);
+		addSlideInAnimation(backImage, 84, 295, -200);
 		root.getChildren().addAll(frontImage, backImage);
 
 		// Rectangles
@@ -105,16 +120,17 @@ public class StartPage {
 		hpProgress2 = createProgressBar(656, 392, 139, 10,
 				Double.valueOf(GameController.getInstance().getPals().get(playerindex).getHp())
 						/ Double.valueOf(GameController.getInstance().getPals().get(playerindex).getMaxHp()));
-		expProgress = createProgressBar(554, 442, 268, 10, GameController.getInstance().getPals().get(playerindex).getExp()
-				/ GameController.getInstance().getPals().get(playerindex).getExpThreshold());
+		expProgress = createProgressBar(554, 442, 268, 10,
+				GameController.getInstance().getPals().get(playerindex).getExp()
+						/ GameController.getInstance().getPals().get(playerindex).getExpThreshold());
 		hpProgress1.setStyle("-fx-accent: green;");
 		hpProgress2.setStyle("-fx-accent: green;");
 		root.getChildren().addAll(hpProgress1, hpProgress2, expProgress);
 
-		playerType = createImageView("type/" + GameController.getInstance().getPals().get(playerindex).getType() + ".png", 52, 54,
-				436, 376);
-		enemyType = createImageView("type/" + GameController.getInstance().getEnemy().get(enemyindex).getType() + ".png", 52, 54,
-				394, 76);
+		playerType = createImageView(
+				"type/" + GameController.getInstance().getPals().get(playerindex).getType() + ".png", 52, 54, 436, 376);
+		enemyType = createImageView(
+				"type/" + GameController.getInstance().getEnemy().get(enemyindex).getType() + ".png", 52, 54, 394, 76);
 		root.getChildren().addAll(playerType, enemyType);
 
 		// Buttons
@@ -137,44 +153,91 @@ public class StartPage {
 		pocket = createText("$" + Integer.toString(instance.getPocket()), 690, 70, "WHITE", 25);
 		pocket.setStroke(Color.BLACK);
 		pocket.setStrokeWidth(1);
-		playerName = createText(GameController.getInstance().getPals().get(playerindex).getName(), 486, 384, "WHITE", 25);
-		playerLevel = createText("Lv." + GameController.getInstance().getPals().get(playerindex).getLevel(), 694, 383, "WHITE",
+		playerName = createText(GameController.getInstance().getPals().get(playerindex).getName(), 486, 384, "WHITE",
 				25);
+		playerLevel = createText("Lv." + GameController.getInstance().getPals().get(playerindex).getLevel(), 694, 383,
+				"WHITE", 25);
 		enemyName = createText(GameController.getInstance().getEnemy().get(enemyindex).getName(), 71, 110, "WHITE", 25);
-		enemyLevel = createText("Lv." + GameController.getInstance().getEnemy().get(enemyindex).getLevel(), 290, 110, "WHITE",
-				25);
+		enemyLevel = createText("Lv." + GameController.getInstance().getEnemy().get(enemyindex).getLevel(), 290, 110,
+				"WHITE", 25);
 
-		levelFractionText = createText((GameController.getInstance().getPals().get(0).getHp()) + "/"
-				+ (GameController.getInstance().getPals().get(0).getMaxHp()), 694, 436, "WHITE", 25);
+		levelFractionText = createText((GameController.getInstance().getPals().get(instance.getSelectPal()).getHp()) + "/"
+				+ (GameController.getInstance().getPals().get(instance.getSelectPal()).getMaxHp()), 694, 436, "WHITE", 25);
 		context = createText("", 42, 503, "WHITE", 25);
 		root.getChildren().addAll(playerName, playerLevel, enemyLevel, enemyName, levelFractionText, context, wave,
 				pocket);
+
+		// Initialize skill buttons
+		skill1Button = createButton("Skill 1", 10, 469, 285, 52);
+		skill2Button = createButton("Skill 2", 303, 469, 285, 52);
+		skill3Button = createButton("Skill 3", 10., 524, 285, 52);
+		skill4Button = createButton("Skill 4", 303, 524, 285, 52);
+
+		// Initially hide skill buttons
+		skill1Button.setVisible(false);
+		skill2Button.setVisible(false);
+		skill3Button.setVisible(false);
+		skill4Button.setVisible(false);
+
+		// Set skill button actions
+		skill1Button.setOnAction(e -> handleSkillSelection(0));
+		skill2Button.setOnAction(e -> handleSkillSelection(1));
+		skill3Button.setOnAction(e -> handleSkillSelection(2));
+		skill4Button.setOnAction(e -> handleSkillSelection(3));
+
+		// Add skill buttons to root
+		root.getChildren().addAll(skill1Button, skill2Button, skill3Button, skill4Button);
+
 		fightButton = createButton("Fight", 599, 469, 252, 52);
 		fightButton.setOnAction(e -> {
-			if (playerTurn) {
-				BasePal enemy = GameController.getInstance().getEnemy().get(GameController.getInstance().getWave()-1);
-				enemy.setHp(0); // Reduce HP or apply attack damage
-				// Switch to enemy turn
+			int size = instance.getPal(playerindex).getMoves().size();
+			if (size >= 1) {
+				skill1Button.setText(instance.getPal(playerindex).getMoves().get(0).getName());
+				skill1Button.setGraphic(createImageView(
+						"type/" + instance.getPal(playerindex).getMoves().get(0).getType() + ".png", 25, 25, 10, 10));
+				skill1Button.setVisible(true);
 			}
+			if (size >= 2) {
+				skill2Button.setText(instance.getPal(playerindex).getMoves().get(1).getName());
+				skill2Button.setGraphic(createImageView(
+						"type/" + instance.getPal(playerindex).getMoves().get(1).getType() + ".png", 25, 25, 10, 10));
+				skill2Button.setVisible(true);
+			}
+			if (size >= 3) {
+				skill3Button.setText(instance.getPal(playerindex).getMoves().get(2).getName());
+				skill3Button.setGraphic(createImageView(
+						"type/" + instance.getPal(playerindex).getMoves().get(2).getType() + ".png", 25, 25, 10, 10));
+				skill3Button.setVisible(true);
+			}
+			if (size >= 4) {
+				skill4Button.setText(instance.getPal(playerindex).getMoves().get(3).getName());
+				skill4Button.setGraphic(createImageView(
+						"type/" + instance.getPal(playerindex).getMoves().get(3).getType() + ".png", 25, 25, 10, 10));
+				skill4Button.setVisible(true);
+			}
+
+			// Optionally disable other controls while choosing a skill
 		});
-		cageButton = createButton("Cage", 725, 524, 127, 52);
+		cageButton = createButton("Bag", 725, 524, 127, 52);
+		cageButton.setOnAction(e -> {
+
+		});
 		palButton = createButton("Pal", 598, 524, 127, 52);
-	    palButton.setOnMouseClicked(event -> {
-	    	if (instance.canSwap()) {
-		        PokemonScene content = new PokemonScene();
-		        Scene scene = new Scene(content.createContent());
-		        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		        stage.setScene(scene);
-	    	}
-	    	else {
+		palButton.setOnAction(event -> {
+			if (!instance.isGameOver()) {
+				PokemonScene content = new PokemonScene();
+				Scene scene = new Scene(content.createContent());
+				Stage stage = Main.getStage();
+				stage.setScene(scene);
+			} else {
 				Alert alert = new Alert(Alert.AlertType.ERROR);
 				alert.setTitle("Failure");
 				alert.setHeaderText(null); // No header text
 				alert.setContentText("No other Pals to swap");
 				alert.showAndWait(); // Wait for the user to close the dialog
-	    	}
+			}
 
-	    });
+		});
 		root.getChildren().addAll(fightButton, cageButton, palButton);
 
 		startGameLoop();
@@ -184,13 +247,9 @@ public class StartPage {
 
 	private static void startGameLoop() {
 		Timeline gameLoop = new Timeline(new KeyFrame(Duration.seconds(0.5), e -> {
-		
 			GameController instance = GameController.getInstance();
-			if(instance.isGameOver()) {
-				return;
-			}
-			BasePal enemy = instance.getEnemy().get(instance.getWave()-1);
-			BasePal player = instance.getPals().get(instance.getSelectPal());
+			BasePal enemy = instance.getEnemy().get(instance.getWave() - 1);
+			player = instance.getPals().get(instance.getSelectPal());
 			if (playerTurn) {
 
 				String desiredText = "What will " + player.getName() + " do?";
@@ -201,43 +260,171 @@ public class StartPage {
 						setPlayerControlsEnabled(true);
 					});
 				}
-				
+
 			} else {
-				// Handle enemy turn logic
+				setPlayerControlsEnabled(false);
+				int enemyMove = new Random().nextInt(enemy.getMoves().size());
+				Move enemyM = enemy.getMoves().get(enemyMove);
+				if (skill == null) {
+					if (player.isFainted()) {
+						enemy.useMove(enemyMove, player);
+						String xx = enemy.getName() + " used " + enemyM.getName() + "!!!" + "\n"
+								+ enemyM.getTypeEffectivenessString(enemyM.getType(), player.getType())+"\n"+player.getName() + " is fainted!!";
+						if (!xx.equals(context.getText()) && !isAnimating) {
+							isAnimating = true;
+							addWriteOnAnimation(context, xx, Duration.seconds(1.5), () -> {
+								isAnimating = false;
+							});
+						}			
+					}else {
+						enemy.useMove(enemyMove, player);
+						String xx = enemy.getName() + " used " + enemyM.getName() + "!!!" + "\n"
+								+ enemyM.getTypeEffectivenessString(enemyM.getType(), player.getType());
+						if (!xx.equals(context.getText()) && !isAnimating) {
+							isAnimating = true;
+							addWriteOnAnimation(context, xx, Duration.seconds(1.5), () -> {
+								isAnimating = false;
+							});
+						}
+					}
 
+
+				} else {
+					if (player.getSpd() >= enemy.getSpd()) {
+						player.useMove(skillindex, enemy);
+						if (enemy.isFainted()) {
+							String desiredText = player.getName() + " used " + skill.getName() + "!!!" + "\n"
+									+ skill.getTypeEffectivenessString(skill.getType(), enemy.getType());
+							if (!desiredText.equals(context.getText()) && !isAnimating) {
+								isAnimating = true;
+								addWriteOnAnimation(context, desiredText, Duration.seconds(1.5), () -> {
+									isAnimating = false;
+								});
+							}
+						} else {
+							enemy.useMove(enemyMove, player);
+							String ab = player.getName() + " used " + skill.getName() + "!!!" + "\n"
+									+ skill.getTypeEffectivenessString(skill.getType(), enemy.getType()) + "\n"
+									+ enemy.getName() + " used " + enemyM.getName() + "!!!" + "\n"
+									+ enemyM.getTypeEffectivenessString(enemyM.getType(), player.getType());
+							if (!ab.equals(context.getText()) && !isAnimating) {
+								isAnimating = true;
+								addWriteOnAnimation(context, ab, Duration.seconds(1.5), () -> {
+									isAnimating = false;
+								});
+							}
+						}
+					} else {
+						enemy.useMove(enemyMove, player);
+						if (player.isFainted()) {
+							String desiredText = enemy.getName() + " used " + enemyM.getName() + "!!!" + "\n"
+									+ enemyM.getTypeEffectivenessString(enemyM.getType(), player.getType())+"\n"+player.getName() + " is fainted!!";
+							if (!desiredText.equals(context.getText()) && !isAnimating) {
+								isAnimating = true;
+								addWriteOnAnimation(context, desiredText, Duration.seconds(1.5), () -> {
+									isAnimating = false;
+								});
+							}
+						} else {
+							player.useMove(skillindex, enemy);
+
+							String desiredText = enemy.getName() + " used " + enemyM.getName() + "!!!" + "\n"
+									+ enemyM.getTypeEffectivenessString(enemyM.getType(), player.getType()) + "\n"
+									+ player.getName() + " used " + skill.getName() + "!!!" + "\n"
+									+ skill.getTypeEffectivenessString(skill.getType(), enemy.getType());
+							if (!desiredText.equals(context.getText()) && !isAnimating) {
+								isAnimating = true;
+								addWriteOnAnimation(context, desiredText, Duration.seconds(1.5), () -> {
+									isAnimating = false;
+								});
+							}
+						}
+
+					}
+					skill = null;
+				}
+				levelFractionText.setText(player.getHp()+"/"+player.getMaxHp());
+				animateHpBar(hpProgress1, Double.valueOf(enemy.getHp())/ Double.valueOf(enemy.getMaxHp()), Duration.seconds(0.5));
+				animateHpBar(hpProgress2, Double.valueOf(player.getHp())/ Double.valueOf(player.getMaxHp()), Duration.seconds(0.5));
+				animateHpBar(expProgress, Double.valueOf(player.getExp())/ Double.valueOf(enemy.getExpThreshold()), Duration.seconds(0.5));
+				setPlayerTurn(true);
 			}
-
 			// Check if the enemy is defeated
 			if (enemy.getHp() <= 0) {
+				int multi =new Random().nextInt(instance.getWave());
+				multi = Math.max(5, multi);
+				player.gainExp(enemy.getLevel()*multi);
+				instance.setPocket(instance.getPocket()+10*multi);
+				String desiredText = enemy.getName() + " is fainted!!";
+				if (!desiredText.equals(context.getText()) && !isAnimating) {
+					isAnimating = true;
+					addWriteOnAnimation(context, desiredText, Duration.seconds(1.5), () -> {
+						isAnimating = false;
+					});
+				}
 				instance.nextWave();
-				if(instance.getWave()<=10) {
-					instance.getEnemy().add(StateRoute1.generateRandomPal((5+instance.getWave()*45/50)));
-				}
-				else if(instance.getWave()<=20) {
-					instance.getEnemy().add(StateRoute2.generateRandomPal((5+instance.getWave()*45/50)));
-				}
-				else if(instance.getWave()<=30) {
-					instance.getEnemy().add(StateRoute3.generateRandomPal((5+instance.getWave()*45/50)));
-				}
-				else if(instance.getWave()<=40) {
-					instance.getEnemy().add(StateRoute4.generateRandomPal((5+instance.getWave()*45/50)));
-				}
-				else {
-					instance.getEnemy().add(StateRoute5.generateRandomPal((5+instance.getWave()*45/50)));
+				if (instance.getWave() <= 10) {
+					instance.getEnemy().add(StateRoute1.generateRandomPal((5 + instance.getWave() * 45 / 50)));
+				} else if (instance.getWave() <= 20) {
+					instance.getEnemy().add(StateRoute2.generateRandomPal((5 + instance.getWave() * 45 / 50)));
+				} else if (instance.getWave() <= 30) {
+					instance.getEnemy().add(StateRoute3.generateRandomPal((5 + instance.getWave() * 45 / 50)));
+				} else if (instance.getWave() <= 40) {
+					instance.getEnemy().add(StateRoute4.generateRandomPal((5 + instance.getWave() * 45 / 50)));
+				} else {
+					instance.getEnemy().add(StateRoute5.generateRandomPal((5 + instance.getWave() * 45 / 50)));
 				}
 				if (instance.getWave() > 50) {
+					
 					context.setText("You Win!");
 					return; // Stop game loop; game over
 				}
+
 				loadNextEnemy();
+				animateHpBar(hpProgress1, 1, Duration.seconds(0.5));
+
+
+			}
+			if (player.isFainted()) {
+
+				if(instance.isGameOver()) {
+					return;
+				}else {
+					for (int i=0;i<instance.getPals().size();i++) {
+						if (!instance.getPal(i).isFainted()) {
+							instance.setSelectPal(i);
+							StartPage content = new StartPage();
+							Scene scene = new Scene(content.createPage());
+							Stage stage = Main.getStage();
+							stage.setScene(scene);
+						}
+					}
+				}
 			}
 
 			// Update wave text
+			pocket.setText("$"+instance.getPocket());
 			wave.setText("Wave " + instance.getWave() + "/50");
 		}));
 
 		gameLoop.setCycleCount(Timeline.INDEFINITE); // Run indefinitely
 		gameLoop.play();
+	}
+
+	private static void handleSkillSelection(int index) {
+		// Hide skill buttons
+		GameController instance = GameController.getInstance();
+		setPlayerTurn(false);
+		skill1Button.setVisible(false);
+		skill2Button.setVisible(false);
+		skill3Button.setVisible(false);
+		skill4Button.setVisible(false);
+
+		// Enable other controls
+		skill = instance.getPal(instance.getSelectPal()).getMoves().get(index);
+		skillindex = index;
+
+		// Perform the skill action (to be implemented based on game logic)
 	}
 
 	private static void animateHpBar(ProgressBar progressBar, double newProgress, Duration duration) {
@@ -248,8 +435,7 @@ public class StartPage {
 
 	private static void loadNextEnemy() {
 		GameController instance = GameController.getInstance();
-		int waveIndex = instance.getWave()-1;
-
+		int waveIndex = instance.getWave() - 1;
 
 		if (waveIndex < instance.getEnemy().size()) {
 			BasePal enemy = instance.getEnemy().get(waveIndex);
@@ -257,7 +443,7 @@ public class StartPage {
 			// Update enemy UI
 			enemyLevel.setText("Lv." + enemy.getLevel());
 			enemyName.setText(enemy.getName());
-			hpProgress1.setProgress((double) enemy.getHp() / enemy.getMaxHp());
+			hpProgress1.setProgress(1);
 
 			// Add more debug statements here
 
@@ -387,5 +573,21 @@ public class StartPage {
 		text.setFill(Color.web(fillColor));
 		text.setFont(Font.font("OCR A Extended", fontSize));
 		return text;
+	}
+
+	public static Boolean getPlayerTurn() {
+		return playerTurn;
+	}
+
+	public static void setPlayerTurn(Boolean playerTurn) {
+		StartPage.playerTurn = playerTurn;
+	}
+
+	public static BasePal getPlayer() {
+		return player;
+	}
+
+	public static void setPlayer(BasePal player) {
+		StartPage.player = player;
 	}
 }

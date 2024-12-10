@@ -10,6 +10,8 @@ import logic.item.PalBall;
 import logic.pal.BasePal;
 import logic.pal.Bulbasaur;
 import logic.pal.Charmander;
+import logic.pal.Exeggutor;
+import logic.pal.Gyarados;
 import logic.pal.Squirtle;
 import logic.state.StateRoute1;
 
@@ -54,7 +56,8 @@ public class GameController {
 		this.selectPal = 0;
 		this.wave = 1;
 		this.xHp = this.xAtt = this.xDef = this.xSpAtt = this.xSpDef = this.xSpeed = 0; // Reset stats
-//		this.enemy.add(new Charmander(3));
+//		this.enemy.add(new Bulbasaur(3));
+//		this.enemy.add(new Exeggutor(3));
 		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
@@ -201,15 +204,6 @@ public class GameController {
 		this.items = items;
 	}
 
-	public boolean canSwap() {
-		int paltoswap = 0;
-		for (BasePal entity : pals) {
-			if (!entity.isFainted())
-				paltoswap++;
-		}
-		return (paltoswap != 1);
-
-	}
 
 	public int getSelectPal() {
 		return selectPal;
