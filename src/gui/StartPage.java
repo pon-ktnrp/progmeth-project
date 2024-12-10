@@ -83,6 +83,7 @@ public class StartPage {
 	private static BasePal player;
 	private static int button=0;
 	private static Boolean capture =false;
+	private static Timeline gameLoop;
 	GameController instance = GameController.getInstance();
 
 	public static Parent createPage() {
@@ -313,7 +314,7 @@ public class StartPage {
 	}
 
 	private static void startGameLoop() {
-		Timeline gameLoop = new Timeline(new KeyFrame(Duration.seconds(0.5), e -> {
+		gameLoop = new Timeline(new KeyFrame(Duration.seconds(0.5), e -> {
 			
 			GameController instance = GameController.getInstance();
 			BasePal enemy = instance.getEnemy().get(instance.getWave() - 1);
@@ -627,9 +628,20 @@ public class StartPage {
 
 						if(instance.isGameOver()) {
 							instance.setMoney(instance.getMoney()+instance.getWave()*10);
+							
 							if(instance.getWave()>50) {
+								Win content = new Win();
+								Scene scene = new Scene(content.createPage());
+								Stage stage = Main.getStage();
+								stage.setScene(scene);
+								gameLoop.stop();
 								
 							}else {
+								Gameover content = new Gameover();
+								Scene scene = new Scene(content.createPage());
+								Stage stage = Main.getStage();
+								stage.setScene(scene);
+								gameLoop.stop();
 								
 							}
 						}else {

@@ -39,7 +39,7 @@ public class GameController {
 	private GameController() {
 		this.pals = new ArrayList<>();
 		this.enemy = new ArrayList<>();
-		items = new ArrayList<>();
+		this.items = new ArrayList<>();
 		initGame();
 	}
 
@@ -93,7 +93,22 @@ public class GameController {
 	}
 
 	public void resetGame() {
-		initGame();
+		this.pals.clear();
+		this.enemy.clear();
+		this.items.clear();
+	    
+	    // Keep the values of money and stats intact
+	    this.selectPal = 0;
+	    this.wave = 1;
+
+	    // Generate a new set of enemies and items
+	    this.enemy.add(StateRoute1.generateRandomPal(1));
+	    addItem(new PalBall(0));
+	    addItem(new PokeBall(0));
+	    addItem(new Potion(0));
+	    addItem(new SuperPotion(0));
+	    addItem(new Revive(0));
+
 	}
 
 	public int getMoney() {

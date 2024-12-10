@@ -48,7 +48,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Gameover {
+public class Win {
 
 	public static Parent createPage() {
 	    Pane root = new Pane();
@@ -57,18 +57,13 @@ public class Gameover {
 	    // Create an ImageView for the background
         ImageView img = new ImageView();
 		try {
-			String classLoaderPath = ClassLoader.getSystemResource("gameover.jpg").toString();
+			String classLoaderPath = ClassLoader.getSystemResource("victory.jpg").toString();
             img.setImage(new Image(classLoaderPath));
 		} catch (Exception e) {
             System.out.println("Couldn't load image");
 		}
-
 	    img.fitWidthProperty().bind(root.widthProperty());
 	    img.fitHeightProperty().bind(root.heightProperty());
-	    root.getChildren().add(img);
-	    Title title = new Title("You Last "+GameController.getInstance().getWave()+"/ 50 wave");
-	    title.setTranslateX(250);
-	    title.setTranslateY(75);
 	    MenuItem itemExit = new MenuItem("BACK");
 	    itemExit.setOnMouseClicked(event -> {
 			GameController.getInstance().resetGame();
@@ -79,9 +74,9 @@ public class Gameover {
 	    });
 
 
-	    itemExit.setTranslateX(75);
-	    itemExit.setTranslateY(500);
-	    root.getChildren().addAll(itemExit,title);
+	    itemExit.setTranslateX(330);
+	    itemExit.setTranslateY(330);
+	    root.getChildren().addAll(img,itemExit);
 
 	    return root;
 	}
@@ -106,7 +101,7 @@ public class Gameover {
 
 	private static class Title extends StackPane {
 		public Title(String name) {
-			Rectangle bg = new Rectangle(500, 60);
+			Rectangle bg = new Rectangle(250, 60);
 			bg.setOpacity(0.4);
 			bg.setFill(Color.WHITE);
 			bg.setStroke(Color.BLACK);
