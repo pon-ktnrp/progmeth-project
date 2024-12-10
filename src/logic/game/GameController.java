@@ -58,12 +58,12 @@ public class GameController {
 		this.xHp = this.xAtt = this.xDef = this.xSpAtt = this.xSpDef = this.xSpeed = 0; // Reset stats
 //		this.enemy.add(new Bulbasaur(3));
 //		this.enemy.add(new Exeggutor(3));
-		this.enemy.add(StateRoute1.generateRandomPal(5));
-		addItem(new PalBall(5));
-		addItem(new PokeBall(5));
-		addItem(new Potion(5));
-		addItem(new SuperPotion(5));
-		addItem(new Revive(5));
+		this.enemy.add(StateRoute1.generateRandomPal(1));
+		addItem(new PalBall(0));
+		addItem(new PokeBall(0));
+		addItem(new Potion(0));
+		addItem(new SuperPotion(0));
+		addItem(new Revive(0));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));

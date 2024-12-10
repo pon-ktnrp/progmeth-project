@@ -421,16 +421,16 @@ public class StartPage {
 				instance.setPocket(instance.getPocket()+10*multi);
 				instance.nextWave();
 				if (instance.getWave() <= 10) {
-					instance.getEnemy().add(StateRoute1.generateRandomPal((5 + instance.getWave() * 45 / 50)));
-				} else if (instance.getWave() <= 20) {
-					instance.getEnemy().add(StateRoute2.generateRandomPal((5 + instance.getWave() * 45 / 50)));
-				} else if (instance.getWave() <= 30) {
-					instance.getEnemy().add(StateRoute3.generateRandomPal((5 + instance.getWave() * 45 / 50)));
-				} else if (instance.getWave() <= 40) {
-					instance.getEnemy().add(StateRoute4.generateRandomPal((5 + instance.getWave() * 45 / 50)));
-				} else {
-					instance.getEnemy().add(StateRoute5.generateRandomPal((5 + instance.getWave() * 45 / 50)));
-				}
+                    instance.getEnemy().add(StateRoute1.generateRandomPal((2 + instance.getWave() * 8 / 10)));
+                } else if (instance.getWave() <= 20) {
+                    instance.getEnemy().add(StateRoute2.generateRandomPal((10 + instance.getWave() * 9 / 10)));
+                } else if (instance.getWave() <= 30) {
+                    instance.getEnemy().add(StateRoute3.generateRandomPal((19 + instance.getWave() * 10 / 10)));
+                } else if (instance.getWave() <= 40) {
+                    instance.getEnemy().add(StateRoute4.generateRandomPal((29 + instance.getWave() * 11 / 10)));
+                } else {
+                    instance.getEnemy().add(StateRoute5.generateRandomPal(40 + instance.getWave() * 9 / 10));
+                }
 				if (instance.getWave() > 50) {
 					
 					context.setText("You Win!");
@@ -579,7 +579,7 @@ public class StartPage {
 						}
 						int multi =new Random().nextInt(instance.getWave());
 						multi = Math.max(5, multi);
-						player.gainExp(enemy.getLevel()*1000);
+						player.gainExp(enemy.getLevel()*10*multi);
 						playerLevel.setText("Lv."+player.getLevel());
 						if (player instanceof Evolvable) {
 							if(((Evolvable) player).isEvolvable()) {
@@ -602,16 +602,16 @@ public class StartPage {
 						instance.setPocket(instance.getPocket()+10*multi);
 						instance.nextWave();
 						if (instance.getWave() <= 10) {
-							instance.getEnemy().add(StateRoute1.generateRandomPal((5 + instance.getWave() * 45 / 50)));
-						} else if (instance.getWave() <= 20) {
-							instance.getEnemy().add(StateRoute2.generateRandomPal((5 + instance.getWave() * 45 / 50)));
-						} else if (instance.getWave() <= 30) {
-							instance.getEnemy().add(StateRoute3.generateRandomPal((5 + instance.getWave() * 45 / 50)));
-						} else if (instance.getWave() <= 40) {
-							instance.getEnemy().add(StateRoute4.generateRandomPal((5 + instance.getWave() * 45 / 50)));
-						} else {
-							instance.getEnemy().add(StateRoute5.generateRandomPal((5 + instance.getWave() * 45 / 50)));
-						}
+		                    instance.getEnemy().add(StateRoute1.generateRandomPal((2 + instance.getWave() * 8 / 10)));
+		                } else if (instance.getWave() <= 20) {
+		                    instance.getEnemy().add(StateRoute2.generateRandomPal((10 + instance.getWave() * 9 / 10)));
+		                } else if (instance.getWave() <= 30) {
+		                    instance.getEnemy().add(StateRoute3.generateRandomPal((19 + instance.getWave() * 10 / 10)));
+		                } else if (instance.getWave() <= 40) {
+		                    instance.getEnemy().add(StateRoute4.generateRandomPal((29 + instance.getWave() * 11 / 10)));
+		                } else {
+		                    instance.getEnemy().add(StateRoute5.generateRandomPal(40 + instance.getWave() * 9 / 10));
+		                }
 						if (instance.getWave() > 50) {
 							
 							context.setText("You Win!");

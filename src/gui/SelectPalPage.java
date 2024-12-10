@@ -61,9 +61,9 @@ public class SelectPalPage {
         pokemonButtons.setTranslateY(150);
         pokemonButtons.setAlignment(Pos.CENTER);
 
-        BasePal Bulbasaur = new Bulbasaur(5);
-        BasePal Charmander = new Charmander(14);
-        BasePal Squirtle = new Squirtle(5);
+        BasePal Bulbasaur = new Bulbasaur(8);
+        BasePal Charmander = new Charmander(8);
+        BasePal Squirtle = new Squirtle(8);
         pokemonButtons.getChildren().addAll(
             createPokemonButton(Bulbasaur),
             createPokemonButton(Charmander),
@@ -110,11 +110,6 @@ public class SelectPalPage {
         Button selectButton = new Button("Select");
         selectButton.setOnAction(e -> {
             GameController.getInstance().addPals(pal);
-            GameController.getInstance().addPals(new Charizard(50));
-            GameController.getInstance().addPals(new Blastoise(50));
-            GameController.getInstance().addPals(new Arcanine(50));
-            GameController.getInstance().addPals(new Bidoof(50));
-            GameController.getInstance().addPals(new Caterpie(50));
 		    Parent secondPage = StartPage.createPage();
 		    Scene newScene = new Scene(secondPage);
 
