@@ -11,6 +11,7 @@ import logic.pal.BasePal;
 import logic.pal.Bulbasaur;
 import logic.pal.Charmander;
 import logic.pal.Squirtle;
+import logic.state.StateRoute1;
 
 public class GameController {
 	private int money; // Initial money value
@@ -51,10 +52,15 @@ public class GameController {
 		this.money = 100; // Reset money
 		this.pocket = 1000; // Reset pocket
 		this.wave = this.xHp = this.xAtt = this.xDef = this.xSpAtt = this.xSpDef = this.xSpeed = 0; // Reset stats
-		this.enemy.add(new Bulbasaur(3));
-		this.enemy.add(new Charmander(3));
-		this.enemy.add(new Squirtle(3));
-		this.enemy.add(new Bulbasaur(3));
+		this.enemy.add(StateRoute1.generateRandomPal(5));
+		this.enemy.add(StateRoute1.generateRandomPal(5));
+		this.enemy.add(StateRoute1.generateRandomPal(5));
+		this.enemy.add(StateRoute1.generateRandomPal(5));
+		this.enemy.add(StateRoute1.generateRandomPal(5));
+		this.enemy.add(StateRoute1.generateRandomPal(5));
+//		this.enemy.add(new Charmander(3));
+//		this.enemy.add(new Squirtle(3));
+//		this.enemy.add(new Bulbasaur(3));
 		
 	}
 
