@@ -7,6 +7,10 @@ import java.util.Map;
 
 import logic.item.BaseItem;
 import logic.item.PalBall;
+import logic.item.PokeBall;
+import logic.item.Potion;
+import logic.item.Revive;
+import logic.item.SuperPotion;
 import logic.pal.BasePal;
 import logic.pal.Bulbasaur;
 import logic.pal.Charmander;
@@ -28,18 +32,14 @@ public class GameController {
 	private static GameController instance;
 	private ArrayList<BasePal> pals;
 	private int selectPal;
+	private int itemPal;
 	private ArrayList<BasePal> enemy;
-	private LinkedHashMap<String, Integer> items;
+	private ArrayList<BaseItem> items;
 
 	private GameController() {
 		this.pals = new ArrayList<>();
 		this.enemy = new ArrayList<>();
-		items = new LinkedHashMap<>();
-		items.put("PalBall", 0);
-		items.put("PokeBall", 0);
-		items.put("Potion", 0);
-		items.put("SuperPotion", 0);
-		items.put("Revive", 0);
+		items = new ArrayList<>();
 		initGame();
 	}
 
@@ -59,6 +59,11 @@ public class GameController {
 //		this.enemy.add(new Bulbasaur(3));
 //		this.enemy.add(new Exeggutor(3));
 		this.enemy.add(StateRoute1.generateRandomPal(5));
+		addItem(new PalBall(5));
+		addItem(new PokeBall(0));
+		addItem(new Potion(0));
+		addItem(new SuperPotion(0));
+		addItem(new Revive(0));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
 //		this.enemy.add(StateRoute1.generateRandomPal(5));
@@ -68,6 +73,23 @@ public class GameController {
 //		this.enemy.add(new Squirtle(3));
 
 		
+	}
+	
+	public BaseItem getItem(int index){
+		return items.get(index);
+	}
+	
+	public void addItem(BaseItem newItem) {
+		boolean found = false;
+		for(int i = 0 ; i < items.size() ; i++) {
+			if(items.get(i).getName().equals(newItem.getName())) {
+				items.get(i).addQuantity(newItem.getQuantity());
+				found = true;
+			}
+		}
+		if(!found) {
+			items.add(newItem);
+		}
 	}
 
 	public void resetGame() {
@@ -191,19 +213,6 @@ public class GameController {
 		this.enemy = enemy;
 	}
 
-	public void addItem(BaseItem newItem) {
-		String nameItem = newItem.getName();
-		items.put(nameItem, newItem.getQuantity() + items.get(nameItem));
-	}
-
-	public LinkedHashMap<String, Integer> getItems() {
-		return items;
-	}
-
-	public void setItems(LinkedHashMap<String, Integer> items) {
-		this.items = items;
-	}
-
 
 	public int getSelectPal() {
 		return selectPal;
@@ -211,6 +220,26 @@ public class GameController {
 
 	public void setSelectPal(int selectPal) {
 		this.selectPal = selectPal;
+	}
+
+	public ArrayList<BaseItem> getItems() {
+		return items;
+	}
+
+	public void setItems(ArrayList<BaseItem> items) {
+		this.items = items;
+	}
+
+	public int getItemPal() {
+		return itemPal;
+	}
+
+	public void setItemPal(int itemPal) {
+		this.itemPal = itemPal;
+	}
+
+	public void setPals(ArrayList<BasePal> pals) {
+		this.pals = pals;
 	}
 
 }

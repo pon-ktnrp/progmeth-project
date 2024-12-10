@@ -103,5 +103,10 @@
       <Button layoutX="303.0" layoutY="469.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill2" />
       <Button layoutX="303.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill4" />
       <Button layoutX="10.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill3" />
+      <Button layoutX="592.0" layoutY="408.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="268.0" text="5" />
+      <Button layoutX="592.0" layoutY="358.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="268.0" text="4" />
+      <Button layoutX="592.0" layoutY="307.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="268.0" text="3" />
+      <Button layoutX="592.0" layoutY="255.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="268.0" text="2" />
+      <Button layoutX="592.0" layoutY="203.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="268.0" text="1" />
    </children>
 </AnchorPane>

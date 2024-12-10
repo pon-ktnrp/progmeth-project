@@ -26,7 +26,6 @@ public class BaseCapture extends BaseItem{
 
         if (randomValue < captureChance) {
             System.out.println(target.getName() + " was captured!");
-            GameController.getInstance().addPals(target);
             return true; // Capture successful
         } else {
             System.out.println(target.getName() + " broke free!");
