@@ -1,107 +1,107 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="600.0" stroke="#362d3e" strokeType="INSIDE" width="860.0" />
-      <ImageView fitHeight="600.0" fitWidth="860.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../../res/field1.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="279.0" fitWidth="287.0" layoutX="502.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../res/front/1.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="279.0" fitWidth="287.0" layoutX="84.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../res/back/1.png" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="124.0" layoutY="462.0" stroke="#c73525" strokeType="INSIDE" strokeWidth="8.0" width="593.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="124.0" layoutX="592.0" layoutY="462.0" stroke="#c73525" strokeType="INSIDE" strokeWidth="8.0" width="268.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="68.0" layoutX="60.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="360.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="89.0" layoutX="462.0" layoutY="359.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="360.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="12.0" layoutX="462.0" layoutY="391.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="360.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="12.0" layoutX="60.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="360.0" />
-      <ProgressBar layoutX="656.0" layoutY="392.0" prefHeight="10.0" prefWidth="139.0" progress="0.0" />
-      <Text fill="#3efa7d" layoutX="628.0" layoutY="404.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Hp">
-         <font>
-            <Font name="OCR A Extended" size="23.0" />
-         </font>
-      </Text>
-      <ProgressBar layoutX="251.0" layoutY="129.0" prefHeight="10.0" prefWidth="139.0" progress="0.0" />
-      <Text fill="#3efa7d" layoutX="223.0" layoutY="141.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Hp">
-         <font>
-            <Font name="OCR A Extended" size="23.0" />
-         </font>
-      </Text>
-      <ProgressBar layoutX="554.0" layoutY="442.0" prefHeight="10.0" prefWidth="268.0" progress="0.0" />
-      <Text fill="#03b7ef" layoutX="533.0" layoutY="442.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Exp">
-         <font>
-            <Font name="OCR A Extended" size="23.0" />
-         </font>
-      </Text>
-      <Button layoutX="599.0" layoutY="469.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" text="Fight" />
-      <Button layoutX="725.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="127.0" text="Cage" />
-      <Button layoutX="598.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="127.0" text="Pal" />
-      <ImageView fitHeight="52.0" fitWidth="54.0" layoutX="436.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../Downloads/GRASS.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="52.0" fitWidth="54.0" layoutX="394.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../Downloads/GRASS.png" />
-         </image>
-      </ImageView>
-      <Text fill="WHITE" layoutX="71.0" layoutY="110.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Bulbasaur">
-         <font>
-            <Font name="OCR A Extended" size="25.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="486.0" layoutY="384.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Bulbasaur">
-         <font>
-            <Font name="OCR A Extended" size="25.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="290.0" layoutY="110.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Lv.5">
-         <font>
-            <Font name="OCR A Extended" size="25.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="694.0" layoutY="383.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Lv.5">
-         <font>
-            <Font name="OCR A Extended" size="25.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="694.0" layoutY="436.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="12/23">
-         <font>
-            <Font name="OCR A Extended" size="25.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="702.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Wave 1/50">
-         <font>
-            <Font name="OCR A Extended" size="25.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="781.0" layoutY="70.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="\$100">
-         <font>
-            <Font name="OCR A Extended" size="25.0" />
-         </font>
-      </Text>
-      <Button layoutX="10.0" layoutY="469.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill1" />
-      <Button layoutX="303.0" layoutY="469.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill2" />
-      <Button layoutX="303.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill4" />
-      <Button layoutX="10.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill3" />
-   </children>
-</AnchorPane>
+	<?xml version="1.0" encoding="UTF-8"?>
+	
+	<?import javafx.scene.control.Button?>
+	<?import javafx.scene.control.ProgressBar?>
+	<?import javafx.scene.image.Image?>
+	<?import javafx.scene.image.ImageView?>
+	<?import javafx.scene.layout.AnchorPane?>
+	<?import javafx.scene.shape.Rectangle?>
+	<?import javafx.scene.text.Font?>
+	<?import javafx.scene.text.Text?>
+	
+	<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+	   <children>
+	      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="600.0" stroke="#362d3e" strokeType="INSIDE" width="860.0" />
+	      <ImageView fitHeight="600.0" fitWidth="860.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+	         <image>
+	            <Image url="@../../res/field1.jpg" />
+	         </image>
+	      </ImageView>
+	      <ImageView fitHeight="279.0" fitWidth="287.0" layoutX="502.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+	         <image>
+	            <Image url="@../../res/front/1.png" />
+	         </image>
+	      </ImageView>
+	      <ImageView fitHeight="279.0" fitWidth="287.0" layoutX="84.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+	         <image>
+	            <Image url="@../../res/back/1.png" />
+	         </image>
+	      </ImageView>
+	      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="124.0" layoutY="462.0" stroke="#c73525" strokeType="INSIDE" strokeWidth="8.0" width="593.0" />
+	      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="124.0" layoutX="592.0" layoutY="462.0" stroke="#c73525" strokeType="INSIDE" strokeWidth="8.0" width="268.0" />
+	      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="68.0" layoutX="60.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="360.0" />
+	      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#362d3e" height="89.0" layoutX="462.0" layoutY="359.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="360.0" />
+	      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="12.0" layoutX="462.0" layoutY="391.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="360.0" />
+	      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="12.0" layoutX="60.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="360.0" />
+	      <ProgressBar layoutX="656.0" layoutY="392.0" prefHeight="10.0" prefWidth="139.0" progress="0.0" />
+	      <Text fill="#3efa7d" layoutX="628.0" layoutY="404.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Hp">
+	         <font>
+	            <Font name="OCR A Extended" size="23.0" />
+	         </font>
+	      </Text>
+	      <ProgressBar layoutX="251.0" layoutY="129.0" prefHeight="10.0" prefWidth="139.0" progress="0.0" />
+	      <Text fill="#3efa7d" layoutX="223.0" layoutY="141.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Hp">
+	         <font>
+	            <Font name="OCR A Extended" size="23.0" />
+	         </font>
+	      </Text>
+	      <ProgressBar layoutX="554.0" layoutY="442.0" prefHeight="10.0" prefWidth="268.0" progress="0.0" />
+	      <Text fill="#03b7ef" layoutX="533.0" layoutY="442.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="Exp">
+	         <font>
+	            <Font name="OCR A Extended" size="23.0" />
+	         </font>
+	      </Text>
+	      <Button layoutX="599.0" layoutY="469.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" text="Fight" />
+	      <Button layoutX="725.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="127.0" text="Cage" />
+	      <Button layoutX="598.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="127.0" text="Pal" />
+	      <ImageView fitHeight="52.0" fitWidth="54.0" layoutX="436.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
+	         <image>
+	            <Image url="@../../../../Downloads/GRASS.png" />
+	         </image>
+	      </ImageView>
+	      <ImageView fitHeight="52.0" fitWidth="54.0" layoutX="394.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+	         <image>
+	            <Image url="@../../../../Downloads/GRASS.png" />
+	         </image>
+	      </ImageView>
+	      <Text fill="WHITE" layoutX="71.0" layoutY="110.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Bulbasaur">
+	         <font>
+	            <Font name="OCR A Extended" size="25.0" />
+	         </font>
+	      </Text>
+	      <Text fill="WHITE" layoutX="486.0" layoutY="384.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Bulbasaur">
+	         <font>
+	            <Font name="OCR A Extended" size="25.0" />
+	         </font>
+	      </Text>
+	      <Text fill="WHITE" layoutX="290.0" layoutY="110.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Lv.5">
+	         <font>
+	            <Font name="OCR A Extended" size="25.0" />
+	         </font>
+	      </Text>
+	      <Text fill="WHITE" layoutX="694.0" layoutY="383.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Lv.5">
+	         <font>
+	            <Font name="OCR A Extended" size="25.0" />
+	         </font>
+	      </Text>
+	      <Text fill="WHITE" layoutX="694.0" layoutY="436.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="12/23">
+	         <font>
+	            <Font name="OCR A Extended" size="25.0" />
+	         </font>
+	      </Text>
+	      <Text fill="WHITE" layoutX="702.0" layoutY="36.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="Wave 1/50">
+	         <font>
+	            <Font name="OCR A Extended" size="25.0" />
+	         </font>
+	      </Text>
+	      <Text fill="WHITE" layoutX="781.0" layoutY="70.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="1.5" text="\$100">
+	         <font>
+	            <Font name="OCR A Extended" size="25.0" />
+	         </font>
+	      </Text>
+	      <Button layoutX="10.0" layoutY="469.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill1" />
+	      <Button layoutX="303.0" layoutY="469.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill2" />
+	      <Button layoutX="303.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill4" />
+	      <Button layoutX="10.0" layoutY="524.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="285.0" text="Skill3" />
+	   </children>
+	</AnchorPane>

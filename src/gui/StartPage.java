@@ -9,7 +9,10 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -19,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.game.GameController;
 import logic.pal.BasePal;
@@ -43,11 +47,9 @@ public class StartPage {
 	private static Text levelFractionText;
 	private static Boolean playerTurn;
 	private static boolean isAnimating = false;
-	private static Timeline currentAnimation;
 	private static Button fightButton;
 	private static Button palButton;
 	private static Button cageButton;
-	private static String fulltext;
 
 	GameController instance = GameController.getInstance();
 
@@ -56,6 +58,9 @@ public class StartPage {
 		AnchorPane root = new AnchorPane();
 		root.setPrefSize(860, 600);
 		playerTurn = true;
+		int playerindex = instance.getSelectPal();
+		int enemyindex = instance.getWave()-1;
+		
 		// Background Rectangle
 		Rectangle background = new Rectangle(860, 600);
 		background.setFill(Color.web("#362d3e"));
@@ -69,12 +74,12 @@ public class StartPage {
 		root.getChildren().add(backgroundImage);
 
 		// Foreground Images
-		frontImage = createImageView("front/" + instance.getEnemy().get(0).getName() + ".png", 287, 279, 502, 127);
+		frontImage = createImageView("front/" + instance.getEnemy().get(enemyindex).getName() + ".png", 287, 279, 502, 127);
 		frontImage.setLayoutX(502); // Ensure layout is set properly
 		frontImage.setLayoutY(127);// Start off-screen
 		addSlideInAnimation(frontImage, 502, 127, 860); // Animate to the target position
 
-		backImage = createImageView("back/" + GameController.getInstance().getPals().get(0).getName() + ".png", 287,
+		backImage = createImageView("back/" + GameController.getInstance().getPals().get(playerindex).getName() + ".png", 287,
 				279, 84, 295);
 		root.getChildren().addAll(frontImage, backImage);
 
@@ -94,20 +99,20 @@ public class StartPage {
 
 		// ProgressBars
 		hpProgress1 = createProgressBar(251, 129, 139, 10,
-				Double.valueOf(GameController.getInstance().getEnemy().get(0).getHp())
-						/ Double.valueOf(GameController.getInstance().getEnemy().get(0).getMaxHp()));
+				Double.valueOf(GameController.getInstance().getEnemy().get(enemyindex).getHp())
+						/ Double.valueOf(GameController.getInstance().getEnemy().get(enemyindex).getMaxHp()));
 		hpProgress2 = createProgressBar(656, 392, 139, 10,
-				Double.valueOf(GameController.getInstance().getPals().get(0).getHp())
-						/ Double.valueOf(GameController.getInstance().getPals().get(0).getMaxHp()));
-		expProgress = createProgressBar(554, 442, 268, 10, GameController.getInstance().getPals().get(0).getExp()
-				/ GameController.getInstance().getPals().get(0).getExpThreshold());
+				Double.valueOf(GameController.getInstance().getPals().get(playerindex).getHp())
+						/ Double.valueOf(GameController.getInstance().getPals().get(playerindex).getMaxHp()));
+		expProgress = createProgressBar(554, 442, 268, 10, GameController.getInstance().getPals().get(playerindex).getExp()
+				/ GameController.getInstance().getPals().get(playerindex).getExpThreshold());
 		hpProgress1.setStyle("-fx-accent: green;");
 		hpProgress2.setStyle("-fx-accent: green;");
 		root.getChildren().addAll(hpProgress1, hpProgress2, expProgress);
 
-		playerType = createImageView("type/" + GameController.getInstance().getPals().get(0).getType() + ".png", 52, 54,
+		playerType = createImageView("type/" + GameController.getInstance().getPals().get(playerindex).getType() + ".png", 52, 54,
 				436, 376);
-		enemyType = createImageView("type/" + GameController.getInstance().getEnemy().get(0).getType() + ".png", 52, 54,
+		enemyType = createImageView("type/" + GameController.getInstance().getEnemy().get(enemyindex).getType() + ".png", 52, 54,
 				394, 76);
 		root.getChildren().addAll(playerType, enemyType);
 
@@ -125,34 +130,43 @@ public class StartPage {
 		expText.setStrokeWidth(1);
 		root.getChildren().addAll(hpText1, hpText2, expText);
 
-		wave = createText("Wave 1/50", 690, 36, "WHITE", 25);
+		wave = createText("Wave " + instance.getWave() + "/50", 690, 36, "WHITE", 25);
 		wave.setStroke(Color.BLACK);
 		wave.setStrokeWidth(1);
 		pocket = createText("$" + Integer.toString(instance.getPocket()), 690, 70, "WHITE", 25);
 		pocket.setStroke(Color.BLACK);
 		pocket.setStrokeWidth(1);
-		playerName = createText(GameController.getInstance().getPals().get(0).getName(), 486, 384, "WHITE", 25);
-		playerLevel = createText("Lv." + GameController.getInstance().getPals().get(0).getLevel(), 694, 383, "WHITE",
+		playerName = createText(GameController.getInstance().getPals().get(playerindex).getName(), 486, 384, "WHITE", 25);
+		playerLevel = createText("Lv." + GameController.getInstance().getPals().get(playerindex).getLevel(), 694, 383, "WHITE",
 				25);
-		enemyName = createText(GameController.getInstance().getEnemy().get(0).getName(), 71, 110, "WHITE", 25);
-		enemyLevel = createText("Lv." + GameController.getInstance().getEnemy().get(0).getLevel(), 290, 110, "WHITE",
+		enemyName = createText(GameController.getInstance().getEnemy().get(enemyindex).getName(), 71, 110, "WHITE", 25);
+		enemyLevel = createText("Lv." + GameController.getInstance().getEnemy().get(enemyindex).getLevel(), 290, 110, "WHITE",
 				25);
 
-		levelFractionText = createText((GameController.getInstance().getPals().get(0).getExp()) + "/"
-				+ (GameController.getInstance().getPals().get(0).getExpThreshold()), 694, 436, "WHITE", 25);
+		levelFractionText = createText((GameController.getInstance().getPals().get(0).getHp()) + "/"
+				+ (GameController.getInstance().getPals().get(0).getMaxHp()), 694, 436, "WHITE", 25);
 		context = createText("", 42, 503, "WHITE", 25);
 		root.getChildren().addAll(playerName, playerLevel, enemyLevel, enemyName, levelFractionText, context, wave,
 				pocket);
 		fightButton = createButton("Fight", 599, 469, 252, 52);
-		fightButton.setOnAction(e -> {
-			if (playerTurn) {
-				BasePal enemy = GameController.getInstance().getEnemy().get(GameController.getInstance().getWave());
-				enemy.setHp(0); // Reduce HP or apply attack damage
-				// Switch to enemy turn
-			}
-		});
 		cageButton = createButton("Cage", 725, 524, 127, 52);
 		palButton = createButton("Pal", 598, 524, 127, 52);
+	    palButton.setOnMouseClicked(event -> {
+	    	if (instance.canSwap()) {
+		        PokemonScene content = new PokemonScene();
+		        Scene scene = new Scene(content.createContent());
+		        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		        stage.setScene(scene);
+	    	}
+	    	else {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle("Failure");
+				alert.setHeaderText(null); // No header text
+				alert.setContentText("No other Pals to swap");
+				alert.showAndWait(); // Wait for the user to close the dialog
+	    	}
+
+	    });
 		root.getChildren().addAll(fightButton, cageButton, palButton);
 
 		startGameLoop();
@@ -162,12 +176,16 @@ public class StartPage {
 
 	private static void startGameLoop() {
 		Timeline gameLoop = new Timeline(new KeyFrame(Duration.seconds(0.5), e -> {
+		
 			GameController instance = GameController.getInstance();
+			if(instance.isGameOver()) {
+				return;
+			}
 			BasePal enemy = instance.getEnemy().get(instance.getWave());
-
+			BasePal player = instance.getPals().get(instance.getSelectPal());
 			if (playerTurn) {
 
-				String desiredText = "What will " + instance.getPals().get(0).getName() + " do?";
+				String desiredText = "What will " + player.getName() + " do?";
 				if (!desiredText.equals(context.getText()) && !isAnimating) { // Check flag
 					isAnimating = true;
 					addWriteOnAnimation(context, desiredText, Duration.seconds(0.5), () -> {
@@ -175,6 +193,7 @@ public class StartPage {
 						setPlayerControlsEnabled(true);
 					});
 				}
+				
 			} else {
 				// Handle enemy turn logic
 
@@ -224,6 +243,7 @@ public class StartPage {
 				String enemyImagePath = "front/" + enemy.getName() + ".png";
 				frontImage.setImage(new Image(ClassLoader.getSystemResource(enemyImagePath).toString()));
 			} catch (Exception e) {
+				System.out.println("Couldn't load enemy picture image: " + e.getMessage());
 			}
 
 			try {

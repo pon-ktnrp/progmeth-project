@@ -110,6 +110,11 @@ public class SelectPalPage {
         Button selectButton = new Button("Select");
         selectButton.setOnAction(e -> {
             GameController.getInstance().addPals(pal);
+            GameController.getInstance().addPals(pal);
+            GameController.getInstance().addPals(pal);
+            GameController.getInstance().addPals(pal);
+            GameController.getInstance().addPals(new Charmander(3));
+            GameController.getInstance().addPals(new Squirtle(2));
             System.out.println(GameController.getInstance().getPals().get(0));
             for(Map.Entry m : GameController.getInstance().getItems().entrySet()){    
                 System.out.println(m.getKey()+" "+m.getValue());    

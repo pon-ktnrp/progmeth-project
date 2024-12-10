@@ -24,14 +24,14 @@ public class GameController {
 	private int wave;
 	private static GameController instance;
 	private ArrayList<BasePal> pals;
-	private BasePal selectPal;
+	private int selectPal;
 	private ArrayList<BasePal> enemy;
-	private LinkedHashMap<String,Integer> items;
+	private LinkedHashMap<String, Integer> items;
 
 	private GameController() {
 		this.pals = new ArrayList<>();
 		this.enemy = new ArrayList<>();
-		items = new  LinkedHashMap<>();
+		items = new LinkedHashMap<>();
 		items.put("PalBall", 0);
 		items.put("PokeBall", 0);
 		items.put("Potion", 0);
@@ -50,12 +50,14 @@ public class GameController {
 	private void initGame() {
 		this.money = 100; // Reset money
 		this.pocket = 1000; // Reset pocket
-		this.wave = this.xHp = this.xAtt = this.xDef = this.xSpAtt = this.xSpDef = this.xSpeed = 0; // Reset stats
+		this.selectPal = 0;
+		this.wave = 1;
+		this.xHp = this.xAtt = this.xDef = this.xSpAtt = this.xSpDef = this.xSpeed = 0; // Reset stats
 		this.enemy.add(new Bulbasaur(3));
 		this.enemy.add(new Charmander(3));
 		this.enemy.add(new Squirtle(3));
 		this.enemy.add(new Bulbasaur(3));
-		
+
 	}
 
 	public void resetGame() {
@@ -109,30 +111,21 @@ public class GameController {
 	public ArrayList<BasePal> getPals() {
 		return pals;
 	}
-	
+
 	public BasePal getPal(int index) {
 		return pals.get(index);
 	}
-	
-	public BasePal getSelectPal() {
-		return this.selectPal;
-	}
-	
-	public void setSelectPal(int index) {
-		this.selectPal = pals.get(index);
-	}
-
 
 	public void addPals(BasePal newpals) {
-		int damage = newpals.getMaxHp()-newpals.getHp();
-		newpals.setBaseHp((int)((1+xHp/5.0)*newpals.getBaseHp()));
-		newpals.setBaseAtk((int)((1+xAtt/5.0)*newpals.getBaseAtk()));
-		newpals.setBaseDef((int)((1+xDef/5.0)*newpals.getBaseDef()));
-		newpals.setBaseSpAtk((int)((1+xSpAtt/5.0)*newpals.getSpAtk()));
-		newpals.setBaseSpDef((int)((1+xSpDef/5.0)*newpals.getSpDef()));
-		newpals.setBaseSpd((int)((1+xSpeed/5.0)*newpals.getSpd()));
+		int damage = newpals.getMaxHp() - newpals.getHp();
+		newpals.setBaseHp((int) ((1 + xHp / 5.0) * newpals.getBaseHp()));
+		newpals.setBaseAtk((int) ((1 + xAtt / 5.0) * newpals.getBaseAtk()));
+		newpals.setBaseDef((int) ((1 + xDef / 5.0) * newpals.getBaseDef()));
+		newpals.setBaseSpAtk((int) ((1 + xSpAtt / 5.0) * newpals.getSpAtk()));
+		newpals.setBaseSpDef((int) ((1 + xSpDef / 5.0) * newpals.getSpDef()));
+		newpals.setBaseSpd((int) ((1 + xSpeed / 5.0) * newpals.getSpd()));
 		newpals.updateStat();
-		newpals.setHp(newpals.getMaxHp()-damage);
+		newpals.setHp(newpals.getMaxHp() - damage);
 		pals.add(newpals);
 	}
 
@@ -188,10 +181,9 @@ public class GameController {
 		this.enemy = enemy;
 	}
 
-	
 	public void addItem(BaseItem newItem) {
 		String nameItem = newItem.getName();
-		items.put(nameItem, newItem.getQuantity()+items.get(nameItem));
+		items.put(nameItem, newItem.getQuantity() + items.get(nameItem));
 	}
 
 	public LinkedHashMap<String, Integer> getItems() {
@@ -202,5 +194,22 @@ public class GameController {
 		this.items = items;
 	}
 
+	public boolean canSwap() {
+		int paltoswap = 0;
+		for (BasePal entity : pals) {
+			if (!entity.isFainted())
+				paltoswap++;
+		}
+		return (paltoswap != 1);
+
+	}
+
+	public int getSelectPal() {
+		return selectPal;
+	}
+
+	public void setSelectPal(int selectPal) {
+		this.selectPal = selectPal;
+	}
 
 }
