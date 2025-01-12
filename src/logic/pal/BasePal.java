@@ -48,14 +48,13 @@ public abstract class BasePal {
     }
 	
 	public void initializeStats(int hp,int atk,int def,int spatk,int spdef,int spd) {
-		setHp(hp);
-		setAtk(atk);
-		setDef(def);
-		setSpAtk(spatk);
-		setSpDef(spdef);
-		setSpd(spd);		
+		setBaseHp(hp);
+		setBaseAtk(atk);
+		setBaseDef(def);
+		setBaseSpAtk(spatk);
+		setBaseSpDef(spdef);
+		setBaseSpd(spd);		
 		updateStat();
-        this.hp = maxHp;
 	}
 	
 	public void heal(int amount) {
@@ -102,6 +101,7 @@ public abstract class BasePal {
         this.spAtk = (int) (0.02 * baseSpAtk * level) + 5;
         this.spDef = (int) (0.02 * baseSpDef * level) + 5;
         this.spd = (int) (0.02 * baseSpd * level) + 5;
+        this.hp = this.maxHp;
 	}
 
 	public String getName() {
