@@ -8,22 +8,10 @@ public class Linoone extends BasePal {
 	
 	public Linoone(int level) {
 		super("Linoone", Type.NORMAL, level);
-		initializeStats();
+		initializeStats(78,70,61,50,61,100);
 		initializeMoves();
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 78;
-		this.baseAtk = 70;
-		this.baseDef = 61;
-		this.baseSpAtk = 50;
-		this.baseSpDef = 61;
-		this.baseSpd = 100;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

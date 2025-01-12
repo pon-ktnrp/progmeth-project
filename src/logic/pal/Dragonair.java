@@ -11,7 +11,7 @@ public class Dragonair extends BasePal implements Evolvable {
 	
 	public Dragonair(int level) {
 		super("Dragonair",Type.DRAGON,level);
-		initializeStats();
+		initializeStats(61,84,65,70,70,70);
 		initializeMoves();
 	}
 	
@@ -24,19 +24,6 @@ public class Dragonair extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Dragonite(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 61;
-		this.baseAtk = 84;
-		this.baseDef = 65;
-		this.baseSpAtk = 70;
-		this.baseSpDef = 70;
-		this.baseSpd = 70;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

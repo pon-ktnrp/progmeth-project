@@ -8,21 +8,8 @@ public class Bibarel extends BasePal {
 
 	public Bibarel(int level) {
 		super("Bibarel", Type.NORMAL, level);
-		initializeStats();
+		initializeStats(79,85,60,55,60,71);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 79;
-		this.baseAtk = 85;
-		this.baseDef = 60;
-		this.baseSpAtk = 55;
-		this.baseSpDef = 60;
-		this.baseSpd = 71;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

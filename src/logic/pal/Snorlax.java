@@ -8,22 +8,10 @@ public class Snorlax extends BasePal {
 	
 	public Snorlax(int level) {
 		super("Snorlax",Type.NORMAL,level);
-		initializeStats();
+		initializeStats(160,110,65,65,110,30);
 		initializeMoves();
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 160;
-		this.baseAtk = 110;
-		this.baseDef = 65;
-		this.baseSpAtk = 65;
-		this.baseSpDef = 110;
-		this.baseSpd = 30;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

@@ -8,21 +8,8 @@ public class Zygarde extends BasePal {
 
 	public Zygarde(int level) {
 		super("Zygarde",Type.GRASS,level);
-		initializeStats();
+		initializeStats(216,100,121,91,95,85);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 216;
-		this.baseAtk = 100;
-		this.baseDef = 121;
-		this.baseSpAtk = 91;
-		this.baseSpDef = 95;
-		this.baseSpd = 85;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

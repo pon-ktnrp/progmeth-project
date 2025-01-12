@@ -10,7 +10,7 @@ public class Rattata extends BasePal implements Evolvable {
 	
 	public Rattata(int level) {
 		super("Rattata", Type.NORMAL, level);
-		initializeStats();
+		initializeStats(30,56,35,25,35,72);
 		initializeMoves();
 	}
 
@@ -26,18 +26,6 @@ public class Rattata extends BasePal implements Evolvable {
 		return new Raticate(this.level);
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 30;
-		this.baseAtk = 56;
-		this.baseDef = 35;
-		this.baseSpAtk = 25;
-		this.baseSpDef = 35;
-		this.baseSpd = 72;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

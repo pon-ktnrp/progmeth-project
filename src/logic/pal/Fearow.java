@@ -8,21 +8,8 @@ public class Fearow extends BasePal {
 	
 	public Fearow(int level) {
 		super("Fearow", Type.NORMAL, level);
-		initializeStats();
+		initializeStats(65,90,65,61,61,100);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 65;
-		this.baseAtk = 90;
-		this.baseDef = 65;
-		this.baseSpAtk = 61;
-		this.baseSpDef = 61;
-		this.baseSpd = 100;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

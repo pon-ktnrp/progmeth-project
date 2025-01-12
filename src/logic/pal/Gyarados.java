@@ -8,22 +8,10 @@ public class Gyarados extends BasePal {
 
 	public Gyarados(int level) {
 		super("Gyarados", Type.WATER, level);
-		initializeStats();
+		initializeStats(95,125,79,60,110,81);
 		initializeMoves();
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 95;
-		this.baseAtk = 125;
-		this.baseDef = 79;
-		this.baseSpAtk = 60;
-		this.baseSpDef = 110;
-		this.baseSpd = 81;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

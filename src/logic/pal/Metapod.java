@@ -10,7 +10,7 @@ public class Metapod extends BasePal implements Evolvable {
 	
 	public Metapod(int level) {
 		super("Metapod",Type.GRASS,level);
-		initializeStats();
+		initializeStats(50,20,55,25,25,30);
 		initializeMoves();
 	}
 	
@@ -24,19 +24,6 @@ public class Metapod extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Butterfree(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 50;
-		this.baseAtk = 20;
-		this.baseDef = 55;
-		this.baseSpAtk = 25;
-		this.baseSpDef = 25;
-		this.baseSpd = 30;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

@@ -8,21 +8,8 @@ public class Arcanine extends BasePal {
 
 	public Arcanine(int level) {
 		super("Arcanine", Type.FIRE, level);
-		initializeStats();
+		initializeStats(90,110,80,100,80,95);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 90;
-		this.baseAtk = 110;
-		this.baseDef = 80;
-		this.baseSpAtk = 100;
-		this.baseSpDef = 80;
-		this.baseSpd = 95;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

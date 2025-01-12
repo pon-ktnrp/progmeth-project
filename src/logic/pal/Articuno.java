@@ -8,22 +8,10 @@ public class Articuno extends BasePal {
 
 	public Articuno(int level) {
 		super("Articuno", Type.WATER, level);
-		initializeStats();
+		initializeStats(90,85,100,95,125,85);
 		initializeMoves();
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 90;
-		this.baseAtk = 85;
-		this.baseDef = 100;
-		this.baseSpAtk = 95;
-		this.baseSpDef = 125;
-		this.baseSpd = 85;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

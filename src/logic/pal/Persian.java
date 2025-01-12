@@ -8,22 +8,10 @@ public class Persian extends BasePal {
 	
 	public Persian(int level) {
 		super("Persian",Type.NORMAL,level);
-		initializeStats();
+		initializeStats(65,70,60,65,65,115);
 		initializeMoves();
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 65;
-		this.baseAtk = 70;
-		this.baseDef = 60;
-		this.baseSpAtk = 65;
-		this.baseSpDef = 65;
-		this.baseSpd = 115;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

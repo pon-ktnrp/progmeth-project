@@ -8,22 +8,10 @@ public class Starmie extends BasePal {
 
 	public Starmie(int level) {
 		super("Starmie", Type.WATER, level);
-		initializeStats();
+		initializeStats(60,75,85,100,85,115);
 		initializeMoves();
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 60;
-		this.baseAtk = 75;
-		this.baseDef = 85;
-		this.baseSpAtk = 100;
-		this.baseSpDef = 85;
-		this.baseSpd = 115;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

@@ -8,22 +8,10 @@ public class Scizor extends BasePal {
 
 	public Scizor(int level) {
 		super("Scizor",Type.GRASS,level);
-		initializeStats();
+		initializeStats(70,130,100,55,80,65);
 		initializeMoves();
 	}
 	
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 70;
-		this.baseAtk = 130;
-		this.baseDef = 100;
-		this.baseSpAtk = 55;
-		this.baseSpDef = 80;
-		this.baseSpd = 65;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

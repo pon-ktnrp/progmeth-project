@@ -10,7 +10,7 @@ public class Bidoof extends BasePal implements Evolvable {
 	
 	public Bidoof(int level) {
 		super("Bidoof", Type.NORMAL, level);
-		initializeStats();
+		initializeStats(59,45,40,35,40,31);
 		initializeMoves();
 	}
 
@@ -24,19 +24,6 @@ public class Bidoof extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Bibarel(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 59;
-		this.baseAtk = 45;
-		this.baseDef = 40;
-		this.baseSpAtk = 35;
-		this.baseSpDef = 40;
-		this.baseSpd = 31;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

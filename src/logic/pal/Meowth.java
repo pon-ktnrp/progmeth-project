@@ -10,7 +10,7 @@ public class Meowth extends BasePal implements Evolvable {
 	
 	public Meowth(int level) {
 		super("Meowth",Type.NORMAL,level);
-		initializeStats();
+		initializeStats(40,45,35,40,40,90);
 		initializeMoves();
 	}
 	
@@ -24,19 +24,6 @@ public class Meowth extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Persian(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 40;
-		this.baseAtk = 45;
-		this.baseDef = 35;
-		this.baseSpAtk = 40;
-		this.baseSpDef = 40;
-		this.baseSpd = 90;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

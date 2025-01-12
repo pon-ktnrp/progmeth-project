@@ -10,7 +10,7 @@ public class Staryu extends BasePal implements Evolvable {
 	
 	public Staryu(int level) {
 		super("Staryu",Type.WATER,level);
-		initializeStats();
+		initializeStats(30,45,55,70,55,85);
 		initializeMoves();
 	}
 	
@@ -26,18 +26,6 @@ public class Staryu extends BasePal implements Evolvable {
 		return new Starmie(this.level);
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 30;
-		this.baseAtk = 45;
-		this.baseDef = 55;
-		this.baseSpAtk = 70;
-		this.baseSpDef = 55;
-		this.baseSpd = 85;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

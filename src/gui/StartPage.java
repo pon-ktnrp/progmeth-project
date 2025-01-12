@@ -320,7 +320,16 @@ public class StartPage {
 			BasePal enemy = instance.getEnemy().get(instance.getWave() - 1);
 			player = instance.getPals().get(instance.getSelectPal());
 			animateHpBar(expProgress, Double.valueOf(player.getExp())/ Double.valueOf(enemy.getExpThreshold()), Duration.seconds(0.5));
-		
+			
+			if(instance.getWave()>50) {
+				WinPage content = new WinPage();
+				Scene scene = new Scene(content.createPage());
+				Stage stage = Main.getStage();
+				stage.setScene(scene);
+				gameLoop.stop();
+				return;
+			}
+			
 			item1.setOnAction(actionEvent -> {
 				BaseCapture item= (BaseCapture) instance.getItem(0);
 				capture =item.tryCapture(enemy);
@@ -433,11 +442,6 @@ public class StartPage {
                 } else {
                     instance.getEnemy().add(StateRoute5.generateRandomPal(40 + instance.getWave() * 9 / 10));
                 }
-				if (instance.getWave() > 50) {
-					
-					context.setText("You Win!");
-					return; // Stop game loop; game over
-				}
 
 				loadNextEnemy();
 				animateHpBar(hpProgress1, 1, Duration.seconds(0.5));
@@ -629,21 +633,13 @@ public class StartPage {
 						if(instance.isGameOver()) {
 							instance.setMoney(instance.getMoney()+instance.getPocket()/100);
 							
-							if(instance.getWave()>50) {
-								WinPage content = new WinPage();
-								Scene scene = new Scene(content.createPage());
-								Stage stage = Main.getStage();
-								stage.setScene(scene);
-								gameLoop.stop();
-								
-							}else {
+
 								GameoverPage content = new GameoverPage();
 								Scene scene = new Scene(content.createPage());
 								Stage stage = Main.getStage();
 								stage.setScene(scene);
 								gameLoop.stop();
 								
-							}
 						}else {
 							for (int i=0;i<instance.getPals().size();i++) {
 								if (!instance.getPal(i).isFainted()) {

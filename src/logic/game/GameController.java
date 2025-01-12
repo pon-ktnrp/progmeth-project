@@ -96,6 +96,8 @@ public class GameController {
 		this.items.clear();
 	    
 	    // Keep the values of money and stats intact
+        BasePal Bulbasaur = new Bulbasaur(8);
+        GameController.getInstance().addPals(Bulbasaur);
 	    this.selectPal = 0;
 	    this.wave = 1;
 

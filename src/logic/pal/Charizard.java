@@ -8,21 +8,8 @@ public class Charizard extends BasePal {
 
 	public Charizard(int level) {
 		super("Charizard",Type.FIRE,level);
-		initializeStats();
+		initializeStats(78,84,78,109,85,100);
 		initializeMoves();
-	}
-	
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 78;
-		this.baseAtk = 84;
-		this.baseDef = 78;
-		this.baseSpAtk = 109;
-		this.baseSpDef = 85;
-		this.baseSpd = 100;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

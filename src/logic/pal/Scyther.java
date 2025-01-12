@@ -10,7 +10,7 @@ public class Scyther extends BasePal implements Evolvable {
 	
 	public Scyther(int level) {
 		super("Scyther",Type.GRASS,level);
-		initializeStats();
+		initializeStats(70,110,80,55,80,105);
 		initializeMoves();
 	}
 	
@@ -26,18 +26,6 @@ public class Scyther extends BasePal implements Evolvable {
 		return new Scizor(this.level);
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 70;
-		this.baseAtk = 110;
-		this.baseDef = 80;
-		this.baseSpAtk = 55;
-		this.baseSpDef = 80;
-		this.baseSpd = 105;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

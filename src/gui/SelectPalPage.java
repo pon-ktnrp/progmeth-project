@@ -109,6 +109,7 @@ public class SelectPalPage {
         // Button
         Button selectButton = new Button("Select");
         selectButton.setOnAction(e -> {
+        	GameController.getInstance().getPals().clear();
             GameController.getInstance().addPals(pal);
 		    Parent secondPage = StartPage.createPage();
 		    Scene newScene = new Scene(secondPage);

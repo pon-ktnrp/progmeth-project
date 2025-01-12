@@ -8,21 +8,8 @@ public class Mewtwo extends BasePal {
 	
 	public Mewtwo(int level) {
 		super("Mewtwo",Type.NORMAL,level);
-		initializeStats();
+		initializeStats(106,110,90,154,90,130);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 106;
-		this.baseAtk = 110;
-		this.baseDef = 90;
-		this.baseSpAtk = 154;
-		this.baseSpDef = 90;
-		this.baseSpd = 130;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

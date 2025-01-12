@@ -8,22 +8,10 @@ public class Raticate extends BasePal {
 
 	public Raticate(int level) {
 		super("Raticate", Type.NORMAL, level);
-		initializeStats();
+		initializeStats(55,81,60,50,70,97);
 		initializeMoves();
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 55;
-		this.baseAtk = 81;
-		this.baseDef = 60;
-		this.baseSpAtk = 50;
-		this.baseSpDef = 70;
-		this.baseSpd = 97;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

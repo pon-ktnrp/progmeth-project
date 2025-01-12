@@ -10,7 +10,7 @@ public class Wartortle extends BasePal implements Evolvable {
 	
 	public Wartortle(int level) {
 		super("Wartortle",Type.WATER,level);
-		initializeStats();
+		initializeStats(59,63,80,65,80,58);
 		initializeMoves();
 	}
 	
@@ -24,19 +24,6 @@ public class Wartortle extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Blastoise(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 59;
-		this.baseAtk = 63;
-		this.baseDef = 80;
-		this.baseSpAtk = 65;
-		this.baseSpDef = 80;
-		this.baseSpd = 58;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

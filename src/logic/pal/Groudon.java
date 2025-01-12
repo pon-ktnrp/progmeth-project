@@ -8,21 +8,8 @@ public class Groudon extends BasePal {
 
 	public Groudon(int level) {
 		super("Groudon",Type.FIRE,level);
-		initializeStats();
+		initializeStats(100,150,140,100,90,90);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 100;
-		this.baseAtk = 150;
-		this.baseDef = 140;
-		this.baseSpAtk = 100;
-		this.baseSpDef = 90;
-		this.baseSpd = 90;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

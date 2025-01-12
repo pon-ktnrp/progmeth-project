@@ -8,22 +8,10 @@ public class Rayquaza extends BasePal {
 
 	public Rayquaza(int level) {
 		super("Rayquaza",Type.DRAGON,level);
-		initializeStats();
+		initializeStats(105,150,90,150,90,95);
 		initializeMoves();
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 105;
-		this.baseAtk = 150;
-		this.baseDef = 90;
-		this.baseSpAtk = 150;
-		this.baseSpDef = 90;
-		this.baseSpd = 95;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

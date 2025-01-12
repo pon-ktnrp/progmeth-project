@@ -8,21 +8,8 @@ public class Butterfree extends BasePal {
 
 	public Butterfree(int level) {
 		super("Butterfree", Type.GRASS, level);
-		initializeStats();
+		initializeStats(60,45,50,90,80,70);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 60;
-		this.baseAtk = 45;
-		this.baseDef = 50;
-		this.baseSpAtk = 90;
-		this.baseSpDef = 80;
-		this.baseSpd = 70;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

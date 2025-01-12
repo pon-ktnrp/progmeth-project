@@ -10,7 +10,7 @@ public class Squirtle extends BasePal implements Evolvable {
 	
 	public Squirtle(int level) {
 		super("Squirtle",Type.WATER,level);
-		initializeStats();
+		initializeStats(44,48,65,50,64,43);
 		initializeMoves();
 	}
 	
@@ -26,18 +26,6 @@ public class Squirtle extends BasePal implements Evolvable {
 		return new Wartortle(this.level);
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 44;
-		this.baseAtk = 48;
-		this.baseDef = 65;
-		this.baseSpAtk = 50;
-		this.baseSpDef = 64;
-		this.baseSpd = 43;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

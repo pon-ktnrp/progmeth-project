@@ -10,7 +10,7 @@ public class Exeggcute extends BasePal implements Evolvable {
 	
 	public Exeggcute(int level) {
 		super("Exeggcute",Type.GRASS,level);
-		initializeStats();
+		initializeStats(60,40,80,60,45,40);
 		initializeMoves();
 	}
 	
@@ -24,19 +24,6 @@ public class Exeggcute extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Exeggutor(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 60;
-		this.baseAtk = 40;
-		this.baseDef = 80;
-		this.baseSpAtk = 60;
-		this.baseSpDef = 45;
-		this.baseSpd = 40;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

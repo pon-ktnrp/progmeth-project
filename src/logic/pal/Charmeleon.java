@@ -11,7 +11,7 @@ public class Charmeleon extends BasePal implements Evolvable {
 	
 	public Charmeleon(int level) {
 		super("Charmeleon",Type.FIRE,level);
-		initializeStats();
+		initializeStats(58,64,58,80,65,80);
 		initializeMoves();
 	}
 	
@@ -25,19 +25,6 @@ public class Charmeleon extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Charizard(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 58;
-		this.baseAtk = 64;
-		this.baseDef = 58;
-		this.baseSpAtk = 80;
-		this.baseSpDef = 65;
-		this.baseSpd = 80;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

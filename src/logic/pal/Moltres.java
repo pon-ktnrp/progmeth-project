@@ -8,22 +8,10 @@ public class Moltres extends BasePal {
 
 	public Moltres(int level) {
 		super("Moltres", Type.FIRE, level);
-		initializeStats();
+		initializeStats(90,100,90,125,85,90);
 		initializeMoves();
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 90;
-		this.baseAtk = 100;
-		this.baseDef = 90;
-		this.baseSpAtk = 125;
-		this.baseSpDef = 85;
-		this.baseSpd = 90;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

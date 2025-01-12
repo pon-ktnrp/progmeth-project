@@ -37,7 +37,6 @@ public abstract class BasePal {
 		this.moves = new ArrayList<Move>();
 	}
 	
-	public abstract void initializeStats();
     public abstract void initializeMoves();
 	
 	public void takeDamage(int damage) {
@@ -47,6 +46,17 @@ public abstract class BasePal {
         	System.out.println(name + " is fainted.");
         }
     }
+	
+	public void initializeStats(int hp,int atk,int def,int spatk,int spdef,int spd) {
+		setHp(hp);
+		setAtk(atk);
+		setDef(def);
+		setSpAtk(spatk);
+		setSpDef(spdef);
+		setSpd(spd);		
+		updateStat();
+        this.hp = maxHp;
+	}
 	
 	public void heal(int amount) {
         this.hp += amount;

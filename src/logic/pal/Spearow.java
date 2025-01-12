@@ -10,7 +10,7 @@ public class Spearow extends BasePal implements Evolvable {
 	
 	public Spearow(int level) {
 		super("Spearow", Type.NORMAL, level);
-		initializeStats();
+		initializeStats(40,60,30,31,31,70);
 		initializeMoves();
 	}
 
@@ -24,19 +24,6 @@ public class Spearow extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Fearow(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 40;
-		this.baseAtk = 60;
-		this.baseDef = 30;
-		this.baseSpAtk = 31;
-		this.baseSpDef = 31;
-		this.baseSpd = 70;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

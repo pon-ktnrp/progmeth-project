@@ -8,21 +8,8 @@ public class Pidgeot extends BasePal {
 
 	public Pidgeot(int level) {
 		super("Pidgeot", Type.NORMAL, level);
-		initializeStats();
+		initializeStats(83,80,75,70,70,101);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 83;
-		this.baseAtk = 80;
-		this.baseDef = 75;
-		this.baseSpAtk = 70;
-		this.baseSpDef = 70;
-		this.baseSpd = 101;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

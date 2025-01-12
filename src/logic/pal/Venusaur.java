@@ -7,21 +7,8 @@ import utils.Type;
 public class Venusaur extends BasePal {
 	public Venusaur(int level) {
 		super("Venusaur",Type.GRASS,level);
-		initializeStats();
+		initializeStats(80,82,83,100,100,80);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 80;
-		this.baseAtk = 82;
-		this.baseDef = 83;
-		this.baseSpAtk = 100;
-		this.baseSpDef = 100;
-		this.baseSpd = 80;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

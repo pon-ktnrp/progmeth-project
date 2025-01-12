@@ -8,23 +8,10 @@ public class Exeggutor extends BasePal {
 
 	public Exeggutor(int level) {
 		super("Exeggutor",Type.GRASS,level);
-		initializeStats();
+		initializeStats(95,95,85,125,65,55);
 		initializeMoves();
 	}
 	
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 95;
-		this.baseAtk = 95;
-		this.baseDef = 85;
-		this.baseSpAtk = 125;
-		this.baseSpDef = 65;
-		this.baseSpd = 55;
-		updateStat();
-        this.hp = maxHp;
-	}
-
 	@Override
 	public void initializeMoves() {
 		// TODO Auto-generated method stub

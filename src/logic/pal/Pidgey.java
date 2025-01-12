@@ -10,7 +10,7 @@ public class Pidgey extends BasePal implements Evolvable {
 	
 	public Pidgey(int level) {
 		super("Pidgey", Type.NORMAL, level);
-		initializeStats();
+		initializeStats(40,45,40,35,35,56);
 		initializeMoves();
 	}
 
@@ -24,19 +24,6 @@ public class Pidgey extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Pidgeotto(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 40;
-		this.baseAtk = 45;
-		this.baseDef = 40;
-		this.baseSpAtk = 35;
-		this.baseSpDef = 35;
-		this.baseSpd = 56;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

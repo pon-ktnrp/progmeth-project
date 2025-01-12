@@ -11,7 +11,7 @@ public class Charmander extends BasePal implements Evolvable {
 	
 	public Charmander(int level) {
 		super("Charmander",Type.FIRE,level);
-		initializeStats();
+		initializeStats(39,52,43,60,50,65);
 		initializeMoves();
 	}
 	
@@ -27,18 +27,6 @@ public class Charmander extends BasePal implements Evolvable {
 		return new Charmeleon(this.level);
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 39;
-		this.baseAtk = 52;
-		this.baseDef = 43;
-		this.baseSpAtk = 60;
-		this.baseSpDef = 50;
-		this.baseSpd = 65;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

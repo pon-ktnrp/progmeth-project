@@ -8,21 +8,8 @@ public class Ninetales extends BasePal {
 
 	public Ninetales(int level) {
 		super("Ninetales",Type.FIRE,level);
-		initializeStats();
+		initializeStats(73,76,75,81,100,100);
 		initializeMoves();
-	}
-	
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 73;
-		this.baseAtk = 76;
-		this.baseDef = 75;
-		this.baseSpAtk = 81;
-		this.baseSpDef = 100;
-		this.baseSpd = 100;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

@@ -8,21 +8,8 @@ public class Dragonite extends BasePal {
 
 	public Dragonite(int level) {
 		super("Dragonite",Type.DRAGON,level);
-		initializeStats();
+		initializeStats(91,134,95,100,100,80);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 91;
-		this.baseAtk = 134;
-		this.baseDef = 95;
-		this.baseSpAtk = 100;
-		this.baseSpDef = 100;
-		this.baseSpd = 80;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

@@ -8,21 +8,8 @@ public class Kyogre extends BasePal {
 
 	public Kyogre(int level) {
 		super("Kyogre",Type.WATER,level);
-		initializeStats();
+		initializeStats(100,100,90,150,140,90);
 		initializeMoves();
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 100;
-		this.baseAtk = 100;
-		this.baseDef = 90;
-		this.baseSpAtk = 150;
-		this.baseSpDef = 140;
-		this.baseSpd = 90;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

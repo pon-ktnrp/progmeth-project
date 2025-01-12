@@ -10,7 +10,7 @@ public class Ivysaur extends BasePal implements Evolvable {
 
 	public Ivysaur(int level) {
 		super("Ivysaur",Type.GRASS,level);
-		initializeStats();
+		initializeStats(60,62,63,80,80,60);
 		initializeMoves();
 	}
 
@@ -24,19 +24,6 @@ public class Ivysaur extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Venusaur(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 60;
-		this.baseAtk = 62;
-		this.baseDef = 63;
-		this.baseSpAtk = 80;
-		this.baseSpDef = 80;
-		this.baseSpd = 60;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

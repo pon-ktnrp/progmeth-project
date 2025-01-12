@@ -1,0 +1,63 @@
+@startuml
+class logic.item.PokeBall {
+}
+class logic.item.Revive {
++ void use(BasePal)
++ String toString()
+}
+
+abstract class logic.item.BaseItem {
+# String name
+# String description
+# int quantity
++ {abstract}void use(BasePal)
++ String getName()
++ void setName(String)
++ String getDescription()
++ void setDescription(String)
++ void addQuantity(int)
++ int getQuantity()
++ void setQuantity(int)
++ void reduceQuantity(int)
++ {abstract}String toString()
+}
+
+
+abstract class logic.item.BaseCapture {
+# double captureRate
++ boolean tryCapture(BasePal)
+- double calculateCaptureChance(BasePal)
++ String toString()
++ void use(BasePal)
+}
+
+
+class logic.item.Potion {
++ void use(BasePal)
++ String toString()
+}
+
+class logic.item.SuperPotion {
++ void use(BasePal)
++ String toString()
+}
+
+abstract class logic.item.BaseConsumption {
+- int effectValue
++ int getEffectValue()
++ void setEffectValue(int)
+}
+
+
+class logic.item.PalBall {
+}
+
+
+logic.item.BaseCapture <|-- logic.item.PokeBall
+logic.item.BaseConsumption <|-- logic.item.Revive
+logic.item.BaseItem <|-- logic.item.BaseCapture
+logic.item.BaseConsumption <|-- logic.item.Potion
+logic.item.BaseConsumption <|-- logic.item.SuperPotion
+logic.item.BaseItem <|-- logic.item.BaseConsumption
+logic.item.BaseCapture <|-- logic.item.PalBall
+@enduml

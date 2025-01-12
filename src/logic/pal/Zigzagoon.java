@@ -10,7 +10,7 @@ public class Zigzagoon extends BasePal implements Evolvable {
 	
 	public Zigzagoon(int level) {
 		super("Zigzagoon", Type.NORMAL, level);
-		initializeStats();
+		initializeStats(38,30,41,30,41,60);
 		initializeMoves();
 	}
 
@@ -26,18 +26,6 @@ public class Zigzagoon extends BasePal implements Evolvable {
 		return new Linoone(this.level);
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 38;
-		this.baseAtk = 30;
-		this.baseDef = 41;
-		this.baseSpAtk = 30;
-		this.baseSpDef = 41;
-		this.baseSpd = 60;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

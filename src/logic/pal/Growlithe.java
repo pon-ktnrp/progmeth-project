@@ -10,7 +10,7 @@ public class Growlithe extends BasePal implements Evolvable {
 	
 	public Growlithe(int level) {
 		super("Growlithe",Type.FIRE,level);
-		initializeStats();
+		initializeStats(55,70,45,70,50,60);
 		initializeMoves();
 	}
 	
@@ -24,19 +24,6 @@ public class Growlithe extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Arcanine(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 55;
-		this.baseAtk = 70;
-		this.baseDef = 45;
-		this.baseSpAtk = 70;
-		this.baseSpDef = 50;
-		this.baseSpd = 60;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

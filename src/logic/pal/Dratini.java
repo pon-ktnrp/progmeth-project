@@ -11,7 +11,7 @@ public class Dratini extends BasePal implements Evolvable {
 	
 	public Dratini(int level) {
 		super("Dratini",Type.DRAGON,level);
-		initializeStats();
+		initializeStats(41,64,45,50,50,50);
 		initializeMoves();
 	}
 	
@@ -26,18 +26,6 @@ public class Dratini extends BasePal implements Evolvable {
 		return new Dragonair(this.level);
 	}
 
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 41;
-		this.baseAtk = 64;
-		this.baseDef = 45;
-		this.baseSpAtk = 50;
-		this.baseSpDef = 50;
-		this.baseSpd = 50;
-		updateStat();
-        this.hp = maxHp;
-	}
 
 	@Override
 	public void initializeMoves() {

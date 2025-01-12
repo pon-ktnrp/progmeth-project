@@ -10,7 +10,7 @@ public class Magikarp extends BasePal implements Evolvable {
 	
 	public Magikarp(int level) {
 		super("Magikarp",Type.WATER,level);
-		initializeStats();
+		initializeStats(20,10,55,15,20,80);
 		initializeMoves();
 	}
 	
@@ -24,19 +24,6 @@ public class Magikarp extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Gyarados(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 20;
-		this.baseAtk = 10;
-		this.baseDef = 55;
-		this.baseSpAtk = 15;
-		this.baseSpDef = 20;
-		this.baseSpd = 80;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

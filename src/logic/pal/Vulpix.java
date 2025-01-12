@@ -10,7 +10,7 @@ public class Vulpix extends BasePal implements Evolvable {
 	
 	public Vulpix(int level) {
 		super("Vulpix",Type.FIRE,level);
-		initializeStats();
+		initializeStats(38,41,40,50,65,65);
 		initializeMoves();
 	}
 	
@@ -24,19 +24,6 @@ public class Vulpix extends BasePal implements Evolvable {
 	public BasePal evolve() {
 		// TODO Auto-generated method stub
 		return new Ninetales(this.level);
-	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 38;
-		this.baseAtk = 41;
-		this.baseDef = 40;
-		this.baseSpAtk = 50;
-		this.baseSpDef = 65;
-		this.baseSpd = 65;
-		updateStat();
-        this.hp = maxHp;
 	}
 
 	@Override

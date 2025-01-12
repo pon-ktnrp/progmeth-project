@@ -10,7 +10,7 @@ public class Caterpie extends BasePal implements Evolvable {
 	
 	public Caterpie(int level) {
 		super("Caterpie",Type.GRASS,level);
-		initializeStats();
+		initializeStats(45,30,35,20,20,45);
 		initializeMoves();
 	}
 	
@@ -25,20 +25,6 @@ public class Caterpie extends BasePal implements Evolvable {
 		// TODO Auto-generated method stub
 		return new Metapod(this.level);
 	}
-
-	@Override
-	public void initializeStats() {
-		// TODO Auto-generated method stub
-		this.baseHp = 45;
-		this.baseAtk = 30;
-		this.baseDef = 35;
-		this.baseSpAtk = 20;
-		this.baseSpDef = 20;
-		this.baseSpd = 45;
-		updateStat();
-        this.hp = maxHp;
-	}
-
 	@Override
 	public void initializeMoves() {
 		// TODO Auto-generated method stub
